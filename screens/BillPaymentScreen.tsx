@@ -1,4 +1,4 @@
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import ListItem from '../assets/components/ListItem';
 
 const BillPaymentScreen: React.FC = () => {
@@ -30,7 +30,7 @@ const BillPaymentScreen: React.FC = () => {
   ];
   return (
     <View>
-      <Text>Bill Payment</Text>
+      <Text style={styles.heading}>Bill Payment</Text>
       <FlatList
         data={listData}
         renderItem={({item}) => (
@@ -46,5 +46,16 @@ const BillPaymentScreen: React.FC = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  heading: {
+    fontSize: 22,
+    fontWeight: '600',
+    color: 'black',
+    marginHorizontal: 25,
+    marginTop: 30,
+    marginBottom: 10,
+  },
+});
 
 export default BillPaymentScreen;

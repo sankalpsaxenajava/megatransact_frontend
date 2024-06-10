@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import ListItem from '../assets/components/ListItem';
 
-const BillPaymentScreen: React.FC = () => {
+const BillPaymentScreen: React.FC = ({navigation}) => {
   const listData = [
     {
       icon: 'userIcon',
@@ -17,6 +17,7 @@ const BillPaymentScreen: React.FC = () => {
       description: 'Select a data plan that fits you',
       onPress: () => {
         console.log('nav to mobile data screen');
+        navigation.navigate('DataPurchaseStack', {screen: 'MobileData'});
       },
     },
     {

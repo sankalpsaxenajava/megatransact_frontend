@@ -1,18 +1,22 @@
 import {Image, Pressable, View, Text, StyleSheet} from 'react-native';
+import icons from '../icons';
+interface ListItemProp {
+  icon: string;
+  mainText: string;
+  description: string;
+  onPress: () => void;
+}
 
-const ListItem = () => {
+const ListItem = ({icon, mainText, description, onPress}: ListItemProp) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.iconContainer}>
-        <Image
-          style={styles.icon}
-          source={require('../../assets/icons/user.png')}
-        />
+        <Image style={styles.icon} source={icons[icon]} />
       </View>
 
       <View style={styles.textContainer}>
-        <Text style={styles.mainText}>Buy Airtime</Text>
-        <Text>Top up your airtime easily</Text>
+        <Text style={styles.mainText}>{mainText}</Text>
+        <Text>{description}</Text>
       </View>
       <View style={styles.iconContainer}>
         <Image
@@ -20,7 +24,7 @@ const ListItem = () => {
           source={require('../../assets/icons/chevron-right.png')}
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 

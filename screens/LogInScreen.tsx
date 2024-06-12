@@ -7,6 +7,8 @@ import {useNavigation} from '@react-navigation/native';
 import {colors} from '../types/colors';
 import {Controller, useForm} from 'react-hook-form';
 import {InputField} from '../components/InputField';
+import {useState} from 'react';
+import CheckBox from '@react-native-community/checkbox';
 
 type LoginNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -16,6 +18,7 @@ type LoginFrom = {
   // todo: transfer to models when schema models out
   username: string;
   password: string;
+  keepLogin: boolean;
 };
 
 const HeaderComponent = () => {
@@ -34,6 +37,7 @@ const HeaderComponent = () => {
 };
 
 const InputComponent = () => {
+  const [checkboxValue, setCheckboxValue] = useState(false);
   const {control, handleSubmit} = useForm<LoginFrom>();
   const onSubmit = handleSubmit(({username, password}) => {});
 
@@ -70,6 +74,26 @@ const InputComponent = () => {
           )}
           rules={{required: 'Please enter your password'}}
         />
+      </View>
+      <View style={styles.options}>
+        <Controller
+          control={control}
+          name="keepLogin"
+          render={({field: {onChange, value}}) => (
+            <View style={styles.checkboxComponent}>
+              <CheckBox
+                value={value}
+                onValueChange={onChange}
+                boxType="square"
+                style={styles.checkbox}
+              />
+              <Text>Keep me logged in</Text>
+            </View>
+          )}
+        />
+        <TouchableOpacity>
+          <Text style={styles.forgetPassword}>Forgot password</Text>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.submitButton} onPress={onSubmit}>
         <Text style={styles.submitText}>Continue</Text>
@@ -117,7 +141,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: colors.lightText,
   },
-
   subHeader: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -132,10 +155,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     borderRadius: 13,
+    marginTop: 25,
   },
   submitText: {
     color: '#fff',
     fontSize: 18,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+  },
+  checkboxComponent: {
+    flexDirection: 'row',
+    gap: 15,
+    alignItems: 'center',
+  },
+  options: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  forgetPassword: {
+    color: colors.primary[500],
   },
 });
 

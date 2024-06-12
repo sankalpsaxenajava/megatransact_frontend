@@ -102,6 +102,41 @@ const InputComponent = () => {
   );
 };
 
+const BottomSheetComponent = ({
+  bottomSheetRef,
+}: {
+  bottomSheetRef: React.RefObject<BottomSheet>;
+}) => {
+  return (
+    <View style={{alignItems: 'center'}}>
+      <View style={styles.sheetHeader}>
+        <Text style={{fontSize: 25}}>Login</Text>
+        <TouchableOpacity
+          onPress={() => bottomSheetRef.current?.close()}
+          style={styles.sheetCloseButton}>
+          <Image source={require('../assets/icons/cross.png')} />
+        </TouchableOpacity>
+      </View>
+      <View style={{gap: 20, alignItems: 'center'}}>
+        <TouchableOpacity style={styles.sheetFingerprint}>
+          <Image
+            source={require('../assets/icons/fingerprint.png')}
+            style={{width: 150, height: 150}}
+          />
+        </TouchableOpacity>
+        <Text style={{fontSize: 17, fontWeight: 200}}>
+          Touch the fingerprint sensor
+        </Text>
+        <TouchableOpacity>
+          <Text style={{fontSize: 17, color: colors.primary[600]}}>
+            Use Face ID instead
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 const LogIn = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const renderBackdrop = useCallback(
@@ -138,32 +173,7 @@ const LogIn = () => {
         ref={bottomSheetRef}
         index={-1}
         backdropComponent={renderBackdrop}>
-        <View style={{alignItems: 'center'}}>
-          <View style={styles.sheetHeader}>
-            <Text style={{fontSize: 25}}>Login</Text>
-            <TouchableOpacity
-              onPress={() => bottomSheetRef.current?.close()}
-              style={styles.sheetCloseButton}>
-              <Image source={require('../assets/icons/cross.png')} />
-            </TouchableOpacity>
-          </View>
-          <View style={{gap: 20, alignItems: 'center'}}>
-            <TouchableOpacity style={styles.sheetFingerprint}>
-              <Image
-                source={require('../assets/icons/fingerprint.png')}
-                style={{width: 150, height: 150}}
-              />
-            </TouchableOpacity>
-            <Text style={{fontSize: 17, fontWeight: 200}}>
-              Touch the fingerprint sensor
-            </Text>
-            <TouchableOpacity>
-              <Text style={{fontSize: 17, color: colors.primary[600]}}>
-                Use Face ID instead
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <BottomSheetComponent bottomSheetRef={bottomSheetRef} />
       </BottomSheet>
     </CustomScrollView>
   );

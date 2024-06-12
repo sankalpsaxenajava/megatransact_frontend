@@ -1,25 +1,28 @@
 import {ScrollView, StyleSheet} from 'react-native';
 
+interface CustomScrollProps {
+  children: React.ReactNode | React.ReactNode[];
+  backgroundColor?: string;
+}
+
 const CustomScrollView = ({
   children,
-}: {
-  children: React.ReactNode | React.ReactNode[];
-}) => {
+  backgroundColor = '#fff',
+}: CustomScrollProps) => {
+  const styles = StyleSheet.create({
+    scrollContainer: {
+      flexGrow: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 20,
+      backgroundColor: backgroundColor,
+    },
+  });
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       {children}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-});
 
 export default CustomScrollView;

@@ -10,6 +10,20 @@ const BackNavigationHeader = ({
   enableMegaTransactTitle = false,
   onBackHandler,
 }: BackNavigationProps) => {
+  const styles = StyleSheet.create({
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginTop: 50,
+      marginBottom: enableMegaTransactTitle ? 0 : 50,
+    },
+    backButton: {
+      width: 30,
+      height: 30,
+      position: 'absolute', // caution on padding
+      left: 0,
+    },
+  });
   return (
     <View style={styles.header}>
       <TouchableOpacity style={styles.backButton} onPress={onBackHandler}>
@@ -19,19 +33,5 @@ const BackNavigationHeader = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 50,
-  },
-  backButton: {
-    width: 30,
-    height: 30,
-    position: 'absolute', // caution on padding
-    left: 0,
-  },
-});
 
 export default BackNavigationHeader;

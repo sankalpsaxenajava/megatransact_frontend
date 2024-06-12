@@ -1,6 +1,5 @@
 import CustomScrollView from '../components/CustomScrollView';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import MegaTransactTitle from '../components/MegaTransactTitle';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
 import {useNavigation} from '@react-navigation/native';

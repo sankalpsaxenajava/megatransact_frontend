@@ -1,31 +1,24 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
-  Image,
   KeyboardAvoidingView,
   Platform,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../types/navigationTypes';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../types/navigationTypes';
+import CustomScrollView from '../components/CustomScrollView';
+import {InputField} from '../components/InputField';
+import BackNavigationHeader from '../components/BackNavigationHeader';
 
-interface InputFieldProps {
-  iconName?: any;
-  placeholder: string;
-  secureTextEntry: boolean;
-  value: string;
-  onChangeText: (text: string) => void;
-  onBlur: () => void;
-  error: string;
-}
-
-type SignUpNavigationProp = NativeStackNavigationProp<RootStackParamList, 'SignUp'>;
+type SignUpNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'SignUp'
+>;
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9]{10}$/; // Adjust regex based on your country's phone number format
@@ -97,98 +90,96 @@ const SignUpScreen: React.FC = () => {
     if (validateInput()) {
       navigation.navigate('VerifyEmail');
     } else {
-      Alert.alert('Validation Error', 'Please fix the errors before submitting.');
+      Alert.alert(
+        'Validation Error',
+        'Please fix the errors before submitting.',
+      );
     }
   };
+  function onBackHandler() {
+    navigation.navigate('AccountType');
+  }
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Image
-          source={require('../assets/logos/MegaTransactLogo.png')}
-          style={styles.logo}
-        />
-        <Text style={styles.title}>MegaTransact</Text>
-        <Text style={styles.subtitle}>PROSPERING TOGETHER</Text>
-        <Text style={styles.signupText}>Sign up</Text>
-        <Text style={styles.smallText}>Register to own an account.</Text>
+      <CustomScrollView>
+        <View style={{width: '100%'}}>
+          <BackNavigationHeader
+            enableMegaTransactTitle={true}
+            onBackHandler={onBackHandler}
+          />
+          <Text style={styles.signupText}>Sign up</Text>
+          <Text style={styles.smallText}>Register to own an account.</Text>
 
-        <View style={styles.inputContainer}>
-          <InputField placeholder="First Name" secureTextEntry={false} value={firstName} onChangeText={setFirstName} onBlur={() => setFirstNameError('')} error={firstNameError} />
-          <InputField placeholder="Last Name" secureTextEntry={false} value={lastName} onChangeText={setLastName} onBlur={() => setLastNameError('')} error={lastNameError} />
-          <InputField iconName={require('../assets/icons/email.png')} placeholder="Email" secureTextEntry={false} value={email} onChangeText={setEmail} onBlur={() => setEmailError('')} error={emailError} />
-          <InputField iconName={require('../assets/icons/eye_off.png')} placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword} onBlur={() => setPasswordError('')} error={passwordError} />
-          <InputField iconName={require('../assets/icons/eye_off.png')} placeholder="Retype Password" secureTextEntry={true} value={retypePassword} onChangeText={setRetypePassword} onBlur={() => setRetypePasswordError('')} error={retypePasswordError} />
-          <InputField iconName={require('../assets/icons/phone.png')} placeholder="Phone Number (Optional)" secureTextEntry={false} value={phoneNumber} onChangeText={setPhoneNumber} onBlur={() => setPhoneNumberError('')} error={phoneNumberError} />
+          <View style={styles.inputContainer}>
+            <InputField
+              placeholder="First Name"
+              secureTextEntry={false}
+              value={firstName}
+              onChangeText={setFirstName}
+              onBlur={() => setFirstNameError('')}
+              error={firstNameError}
+            />
+            <InputField
+              placeholder="Last Name"
+              secureTextEntry={false}
+              value={lastName}
+              onChangeText={setLastName}
+              onBlur={() => setLastNameError('')}
+              error={lastNameError}
+            />
+            <InputField
+              iconName={require('../assets/icons/email.png')}
+              placeholder="Email"
+              secureTextEntry={false}
+              value={email}
+              onChangeText={setEmail}
+              onBlur={() => setEmailError('')}
+              error={emailError}
+            />
+            <InputField
+              placeholder="Password"
+              secureTextEntry={true}
+              value={password}
+              onChangeText={setPassword}
+              onBlur={() => setPasswordError('')}
+              error={passwordError}
+              varient="password"
+            />
+            <InputField
+              placeholder="Retype Password"
+              secureTextEntry={true}
+              value={retypePassword}
+              onChangeText={setRetypePassword}
+              onBlur={() => setRetypePasswordError('')}
+              error={retypePasswordError}
+              varient="password"
+            />
+            <InputField
+              iconName={require('../assets/icons/phone.png')}
+              placeholder="Phone Number (Optional)"
+              secureTextEntry={false}
+              value={phoneNumber}
+              onChangeText={setPhoneNumber}
+              onBlur={() => setPhoneNumberError('')}
+              error={phoneNumberError}
+            />
+          </View>
+
+          <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+            <Text style={styles.buttonText}>Sign up</Text>
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSignUp}  
-        >
-          <Text style={styles.buttonText}>Sign up</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      </CustomScrollView>
     </KeyboardAvoidingView>
   );
 };
 
-const InputField: React.FC<InputFieldProps> = ({
-  iconName,
-  placeholder,
-  secureTextEntry,
-  value,
-  onChangeText,
-  onBlur,
-  error
-}) => (
-  <View style={[styles.inputField, !!error && { borderColor: 'red' }]}>
-    <TextInput 
-      placeholder={placeholder}
-      secureTextEntry={secureTextEntry}
-      style={styles.input}
-      placeholderTextColor="#ccc"
-      value={value}
-      onChangeText={onChangeText}
-      onBlur={onBlur}
-    />
-    {!!error && <Text style={styles.errorText}>{error}</Text>}
-    {iconName && <Image source={iconName} style={styles.inputIcon} />}
-  </View>
-);
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  logo: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-    marginBottom: 8,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#6200EA',
-    alignSelf: 'center',
-    fontFamily: 'Manrope-Bold',
-  },
-  subtitle: {
-    fontSize: 10,
-    color: '#290062',
-    alignSelf: 'center',
-    fontFamily: 'Manrope-Regular',
-    paddingBottom: 60,
   },
   signupText: {
     fontSize: 18,
@@ -196,6 +187,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     alignSelf: 'center',
     fontFamily: 'Manrope-Regular',
+    paddingTop: 60,
   },
   smallText: {
     fontSize: 14,
@@ -208,31 +200,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 20,
     paddingTop: 30,
-  },
-  inputField: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: '#CFCFCF',
-    marginBottom: 10,
-    borderRadius: 8,
-    backgroundColor: '#FFF',
-    width: '100%',
-    paddingTop: 3,
-    paddingRight: 20,
-    paddingBottom: 3,
-    paddingLeft: 13,
-  },
-  inputIcon: {
-    width: 24,
-    height: 24,
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    fontFamily: 'Manrope-Regular',
-    color: '#000000'
   },
   button: {
     backgroundColor: '#6200EA',
@@ -247,14 +214,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     fontFamily: 'Manrope-Bold',
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 12,
-    paddingTop: 2,
-    textAlign: 'right',
-    alignSelf: 'stretch',
-    fontFamily: 'Manrope-Regular',
   },
 });
 

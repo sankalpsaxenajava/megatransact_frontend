@@ -1,4 +1,10 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import CustomScrollView from '../components/CustomScrollView';
 import MegaTransactTitle from '../components/MegaTransactTitle';
 import {colors} from '../types/colors';
@@ -18,21 +24,26 @@ const SplashScreen = () => {
   }
 
   return (
-    <CustomScrollView>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <MegaTransactTitle size={7} />
+    <ImageBackground
+      source={require('../assets/images/splash_bg.png')}
+      resizeMode="cover"
+      style={styles.imageBackground}>
+      <CustomScrollView backgroundColor="transparent">
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <MegaTransactTitle size={7} />
+          </View>
+          <View style={styles.buttonList}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Log in</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={onRegisterHandler}>
+              <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.buttonList}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Log in</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={onRegisterHandler}>
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </CustomScrollView>
+      </CustomScrollView>
+    </ImageBackground>
   );
 };
 
@@ -60,6 +71,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.primary[600],
     fontSize: 15,
+  },
+  imageBackground: {
+    flex: 1,
   },
 });
 

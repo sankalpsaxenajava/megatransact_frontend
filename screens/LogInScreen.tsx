@@ -10,31 +10,17 @@ import {InputField} from '../components/InputField';
 import {useCallback, useRef, useState} from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
+import BackNavigationHeader from '../components/BackNavigationHeader';
 
 type LoginNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
-  'LogIn'
+  'Login'
 >;
 type LoginFrom = {
   // todo: transfer to models when schema models out
   username: string;
   password: string;
   keepLogin: boolean;
-};
-
-const HeaderComponent = () => {
-  const navigation = useNavigation<LoginNavigationProps>();
-  function onBackHandler() {
-    navigation.navigate('Splash');
-  }
-  return (
-    <View style={styles.header}>
-      <TouchableOpacity style={styles.backButton} onPress={onBackHandler}>
-        <Image source={require('../assets/icons/back_button.png')} />
-      </TouchableOpacity>
-      <MegaTransactTitle size={5.5} />
-    </View>
-  );
 };
 
 const InputComponent = () => {
@@ -137,7 +123,11 @@ const BottomSheetComponent = ({
   );
 };
 
-const LogIn = () => {
+const LoginScreen = () => {
+  const navigation = useNavigation<LoginNavigationProps>();
+  function onBackHandler() {
+    navigation.navigate('Splash');
+  }
   const bottomSheetRef = useRef<BottomSheet>(null);
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -153,7 +143,10 @@ const LogIn = () => {
   return (
     <CustomScrollView>
       <View style={styles.container}>
-        <HeaderComponent />
+        <BackNavigationHeader
+          enableMegaTransactTitle={true}
+          onBackHandler={onBackHandler}
+        />
         <View style={styles.subHeader}>
           <Text style={{fontSize: 25}}>Welcome back</Text>
           <Text style={{fontSize: 15, color: colors.lightText}}>
@@ -184,17 +177,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     marginHorizontal: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 50,
-  },
-  backButton: {
-    width: 30,
-    height: 30,
-    position: 'absolute', // caution on padding
-    left: 0,
   },
   subHeader: {
     flexDirection: 'column',
@@ -261,4 +243,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogIn;
+export default LoginScreen;

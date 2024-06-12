@@ -1,7 +1,8 @@
 export type RootStackParamList = {
   Splash: undefined;
   AccountType: undefined;
-  LogIn: undefined;
+  Login: undefined;
+  SetupPin: undefined;
   SignUp: undefined;
   VerifyEmail: undefined;
 };

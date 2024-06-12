@@ -47,7 +47,7 @@ const OptionListComponent = () => {
   );
 };
 
-const AccountType = () => {
+const AccountTypeScreen = () => {
   return (
     <CustomScrollView backgroundColor={colors.primary[600]}>
       <View style={styles.container}>
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountType;
+export default AccountTypeScreen;

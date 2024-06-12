@@ -6,9 +6,10 @@ import SignUpScreen from './screens/SignUpScreen';
 import VerifyEmailScreen from './screens/VerifyEmailScreen';
 import {RootStackParamList} from './types/navigationTypes';
 import SplashScreen from './screens/SplashScreen';
-import AccountType from './screens/AccountTypeScreen';
-import LogIn from './screens/LogInScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import SetupPinScreen from './screens/SetupPinScreen';
+import LoginScreen from './screens/LoginScreen';
+import AccountTypeScreen from './screens/AccountTypeScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,12 +25,17 @@ function App() {
           />
           <Stack.Screen
             name="AccountType"
-            component={AccountType}
+            component={AccountTypeScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="LogIn"
-            component={LogIn}
+            name="Login"
+            component={LoginScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SetupPin"
+            component={SetupPinScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen

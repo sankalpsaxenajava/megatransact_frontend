@@ -11,9 +11,9 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
-import MegaTransactTitle from '../components/MegaTransactTitle';
 import CustomScrollView from '../components/CustomScrollView';
 import {InputField} from '../components/InputField';
+import BackNavigationHeader from '../components/BackNavigationHeader';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -96,74 +96,82 @@ const SignUpScreen: React.FC = () => {
       );
     }
   };
+  function onBackHandler() {
+    navigation.navigate('AccountType');
+  }
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
       <CustomScrollView>
-        <MegaTransactTitle size={5} />
-        <Text style={styles.signupText}>Sign up</Text>
-        <Text style={styles.smallText}>Register to own an account.</Text>
+        <View style={{width: '100%'}}>
+          <BackNavigationHeader
+            enableMegaTransactTitle={true}
+            onBackHandler={onBackHandler}
+          />
+          <Text style={styles.signupText}>Sign up</Text>
+          <Text style={styles.smallText}>Register to own an account.</Text>
 
-        <View style={styles.inputContainer}>
-          <InputField
-            placeholder="First Name"
-            secureTextEntry={false}
-            value={firstName}
-            onChangeText={setFirstName}
-            onBlur={() => setFirstNameError('')}
-            error={firstNameError}
-          />
-          <InputField
-            placeholder="Last Name"
-            secureTextEntry={false}
-            value={lastName}
-            onChangeText={setLastName}
-            onBlur={() => setLastNameError('')}
-            error={lastNameError}
-          />
-          <InputField
-            iconName={require('../assets/icons/email.png')}
-            placeholder="Email"
-            secureTextEntry={false}
-            value={email}
-            onChangeText={setEmail}
-            onBlur={() => setEmailError('')}
-            error={emailError}
-          />
-          <InputField
-            placeholder="Password"
-            secureTextEntry={true}
-            value={password}
-            onChangeText={setPassword}
-            onBlur={() => setPasswordError('')}
-            error={passwordError}
-            varient="password"
-          />
-          <InputField
-            placeholder="Retype Password"
-            secureTextEntry={true}
-            value={retypePassword}
-            onChangeText={setRetypePassword}
-            onBlur={() => setRetypePasswordError('')}
-            error={retypePasswordError}
-            varient="password"
-          />
-          <InputField
-            iconName={require('../assets/icons/phone.png')}
-            placeholder="Phone Number (Optional)"
-            secureTextEntry={false}
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
-            onBlur={() => setPhoneNumberError('')}
-            error={phoneNumberError}
-          />
+          <View style={styles.inputContainer}>
+            <InputField
+              placeholder="First Name"
+              secureTextEntry={false}
+              value={firstName}
+              onChangeText={setFirstName}
+              onBlur={() => setFirstNameError('')}
+              error={firstNameError}
+            />
+            <InputField
+              placeholder="Last Name"
+              secureTextEntry={false}
+              value={lastName}
+              onChangeText={setLastName}
+              onBlur={() => setLastNameError('')}
+              error={lastNameError}
+            />
+            <InputField
+              iconName={require('../assets/icons/email.png')}
+              placeholder="Email"
+              secureTextEntry={false}
+              value={email}
+              onChangeText={setEmail}
+              onBlur={() => setEmailError('')}
+              error={emailError}
+            />
+            <InputField
+              placeholder="Password"
+              secureTextEntry={true}
+              value={password}
+              onChangeText={setPassword}
+              onBlur={() => setPasswordError('')}
+              error={passwordError}
+              varient="password"
+            />
+            <InputField
+              placeholder="Retype Password"
+              secureTextEntry={true}
+              value={retypePassword}
+              onChangeText={setRetypePassword}
+              onBlur={() => setRetypePasswordError('')}
+              error={retypePasswordError}
+              varient="password"
+            />
+            <InputField
+              iconName={require('../assets/icons/phone.png')}
+              placeholder="Phone Number (Optional)"
+              secureTextEntry={false}
+              value={phoneNumber}
+              onChangeText={setPhoneNumber}
+              onBlur={() => setPhoneNumberError('')}
+              error={phoneNumberError}
+            />
+          </View>
+
+          <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+            <Text style={styles.buttonText}>Sign up</Text>
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-          <Text style={styles.buttonText}>Sign up</Text>
-        </TouchableOpacity>
       </CustomScrollView>
     </KeyboardAvoidingView>
   );

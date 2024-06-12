@@ -23,7 +23,7 @@ const SplashScreen = () => {
     navigation.navigate('AccountType');
   }
   function onLoginHandler() {
-    navigation.navigate('LogIn');
+    navigation.navigate('Login');
   }
 
   return (

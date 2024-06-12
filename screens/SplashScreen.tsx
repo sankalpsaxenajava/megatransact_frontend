@@ -1,8 +1,22 @@
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import CustomScrollView from '../components/CustomScrollView';
 import MegaTransactTitle from '../components/MegaTransactTitle';
+import {colors} from '../types/colors';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../types/navigationTypes';
+
+type AccountTypeNavigationProps = NativeStackNavigationProp<
+  RootStackParamList,
+  'Splash'
+>;
 
 const SplashScreen = () => {
+  const navigation = useNavigation<AccountTypeNavigationProps>();
+  function onRegisterHandler() {
+    navigation.navigate('AccountType');
+  }
+
   return (
     <CustomScrollView>
       <View style={styles.container}>
@@ -13,7 +27,7 @@ const SplashScreen = () => {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Log in</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={onRegisterHandler}>
             <Text style={styles.buttonText}>Register</Text>
           </TouchableOpacity>
         </View>
@@ -37,14 +51,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   button: {
-    backgroundColor: '#FFC107',
+    backgroundColor: colors.secondary,
     width: '48%',
     padding: 20,
     borderRadius: 8,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#5900D5',
+    color: colors.primary,
     fontSize: 15,
   },
 });

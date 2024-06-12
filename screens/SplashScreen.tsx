@@ -12,15 +12,18 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
 
-type AccountTypeNavigationProps = NativeStackNavigationProp<
+type SplashNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
   'Splash'
 >;
 
 const SplashScreen = () => {
-  const navigation = useNavigation<AccountTypeNavigationProps>();
+  const navigation = useNavigation<SplashNavigationProps>();
   function onRegisterHandler() {
     navigation.navigate('AccountType');
+  }
+  function onLoginHandler() {
+    navigation.navigate('LogIn');
   }
 
   return (
@@ -34,7 +37,7 @@ const SplashScreen = () => {
             <MegaTransactTitle size={7} />
           </View>
           <View style={styles.buttonList}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={onLoginHandler}>
               <Text style={styles.buttonText}>Log in</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={onRegisterHandler}>

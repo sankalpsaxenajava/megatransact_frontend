@@ -15,16 +15,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
 import MegaTransactTitle from '../components/MegaTransactTitle';
 import CustomScrollView from '../components/CustomScrollView';
-
-interface InputFieldProps {
-  iconName?: any;
-  placeholder: string;
-  secureTextEntry: boolean;
-  value: string;
-  onChangeText: (text: string) => void;
-  onBlur: () => void;
-  error: string;
-}
+import {InputField} from '../components/InputField';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -180,30 +171,6 @@ const SignUpScreen: React.FC = () => {
   );
 };
 
-const InputField: React.FC<InputFieldProps> = ({
-  iconName,
-  placeholder,
-  secureTextEntry,
-  value,
-  onChangeText,
-  onBlur,
-  error,
-}) => (
-  <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
-    <TextInput
-      placeholder={placeholder}
-      secureTextEntry={secureTextEntry}
-      style={styles.input}
-      placeholderTextColor="#ccc"
-      value={value}
-      onChangeText={onChangeText}
-      onBlur={onBlur}
-    />
-    {!!error && <Text style={styles.errorText}>{error}</Text>}
-    {iconName && <Image source={iconName} style={styles.inputIcon} />}
-  </View>
-);
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -228,31 +195,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingTop: 30,
   },
-  inputField: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: '#CFCFCF',
-    marginBottom: 10,
-    borderRadius: 8,
-    backgroundColor: '#FFF',
-    width: '100%',
-    paddingTop: 3,
-    paddingRight: 20,
-    paddingBottom: 3,
-    paddingLeft: 13,
-  },
-  inputIcon: {
-    width: 24,
-    height: 24,
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    fontFamily: 'Manrope-Regular',
-    color: '#000000',
-  },
   button: {
     backgroundColor: '#6200EA',
     padding: 15,
@@ -266,14 +208,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     fontFamily: 'Manrope-Bold',
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 12,
-    paddingTop: 2,
-    textAlign: 'right',
-    alignSelf: 'stretch',
-    fontFamily: 'Manrope-Regular',
   },
 });
 

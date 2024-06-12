@@ -30,7 +30,7 @@ interface InputFieldProps {
   secureTextEntry: boolean;
   value: string;
   onChangeText: (text: string) => void;
-  onBlur: () => void;
+  onBlur?: () => void;
   error: string;
 }
 

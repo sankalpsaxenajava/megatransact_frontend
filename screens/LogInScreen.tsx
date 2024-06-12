@@ -1,22 +1,22 @@
 import CustomScrollView from '../components/CustomScrollView';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import MegaTransactTitle from '../components/MegaTransactTitle';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
 import {useNavigation} from '@react-navigation/native';
 import {colors} from '../types/colors';
+import {Controller, useForm} from 'react-hook-form';
+import {InputField} from '../components/InputField';
 
 type LoginNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
   'LogIn'
 >;
+type LoginFrom = {
+  // todo: transfer to models when schema models out
+  username: string;
+  password: string;
+};
 
 const HeaderComponent = () => {
   const navigation = useNavigation<LoginNavigationProps>();
@@ -33,6 +33,51 @@ const HeaderComponent = () => {
   );
 };
 
+const InputComponent = () => {
+  const {control, handleSubmit} = useForm<LoginFrom>();
+  const onSubmit = handleSubmit(({username, password}) => {});
+
+  return (
+    <View>
+      <View style={styles.inputComponent}>
+        <Controller
+          control={control}
+          name="username"
+          render={({field: {onChange, value}, fieldState: {error}}) => (
+            <InputField
+              iconName={require('../assets/icons/email.png')}
+              placeholder="Username"
+              secureTextEntry={false}
+              value={value}
+              onChangeText={onChange}
+              error={error && error.message ? error.message : ''}
+            />
+          )}
+          rules={{required: 'Please enter your username'}}
+        />
+        <Controller
+          control={control}
+          name="password"
+          render={({field: {onChange, value}, fieldState: {error}}) => (
+            <InputField
+              iconName={require('../assets/icons/eye_off.png')}
+              placeholder="Password"
+              secureTextEntry={true}
+              value={value}
+              onChangeText={onChange}
+              error={error && error.message ? error.message : ''}
+            />
+          )}
+          rules={{required: 'Please enter your password'}}
+        />
+      </View>
+      <TouchableOpacity style={styles.submitButton} onPress={onSubmit}>
+        <Text style={styles.submitText}>Continue</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
 const LogIn = () => {
   return (
     <CustomScrollView>
@@ -42,6 +87,7 @@ const LogIn = () => {
           <Text style={styles.title}>Welcome back</Text>
           <Text style={styles.subtitle}>Login to your account to continue</Text>
         </View>
+        <InputComponent />
       </View>
     </CustomScrollView>
   );
@@ -77,6 +123,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 7,
     paddingVertical: 50,
+  },
+  inputComponent: {
+    gap: 15,
+  },
+  submitButton: {
+    backgroundColor: colors.primary[500],
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 13,
+  },
+  submitText: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
 

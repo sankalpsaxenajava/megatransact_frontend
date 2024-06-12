@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -15,6 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
 import MegaTransactTitle from '../components/MegaTransactTitle';
+import CustomScrollView from '../components/CustomScrollView';
 
 interface InputFieldProps {
   iconName?: any;
@@ -112,7 +112,7 @@ const SignUpScreen: React.FC = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <CustomScrollView>
         <MegaTransactTitle size={5} />
         <Text style={styles.signupText}>Sign up</Text>
         <Text style={styles.smallText}>Register to own an account.</Text>
@@ -175,7 +175,7 @@ const SignUpScreen: React.FC = () => {
         <TouchableOpacity style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>Sign up</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </CustomScrollView>
     </KeyboardAvoidingView>
   );
 };
@@ -207,13 +207,6 @@ const InputField: React.FC<InputFieldProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
   },
   signupText: {
     fontSize: 18,

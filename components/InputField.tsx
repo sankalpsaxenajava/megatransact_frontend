@@ -1,4 +1,12 @@
-import {View, TextInput, Text, Image, StyleSheet} from 'react-native';
+import {useState} from 'react';
+import {
+  View,
+  TextInput,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
 export const InputField: React.FC<InputFieldProps> = ({
   iconName,
@@ -8,21 +16,39 @@ export const InputField: React.FC<InputFieldProps> = ({
   onChangeText,
   onBlur,
   error,
-}) => (
-  <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
-    <TextInput
-      placeholder={placeholder}
-      secureTextEntry={secureTextEntry}
-      style={styles.input}
-      placeholderTextColor="#ccc"
-      value={value}
-      onChangeText={onChangeText}
-      onBlur={onBlur}
-    />
-    {!!error && <Text style={styles.errorText}>{error}</Text>}
-    {iconName && <Image source={iconName} style={styles.inputIcon} />}
-  </View>
-);
+  varient,
+}) => {
+  const [isHidden, setIsHidden] = useState(true);
+  return (
+    <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
+      <TextInput
+        placeholder={placeholder}
+        secureTextEntry={varient == 'password' ? isHidden : secureTextEntry}
+        style={styles.input}
+        placeholderTextColor="#ccc"
+        value={value}
+        onChangeText={onChangeText}
+        onBlur={onBlur}
+      />
+      {!!error && <Text style={styles.errorText}>{error}</Text>}
+      {!varient && iconName && (
+        <Image source={iconName} style={styles.inputIcon} />
+      )}
+      {varient == 'password' && (
+        <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
+          <Image
+            source={
+              isHidden
+                ? require('../assets/icons/eye_off.png')
+                : require('../assets/icons/eye_on.png')
+            }
+            style={styles.inputIcon}
+          />
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
 
 interface InputFieldProps {
   iconName?: any;
@@ -32,6 +58,7 @@ interface InputFieldProps {
   onChangeText: (text: string) => void;
   onBlur?: () => void;
   error: string;
+  varient?: 'password' | undefined;
 }
 
 const styles = StyleSheet.create({

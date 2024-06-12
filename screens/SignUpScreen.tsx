@@ -133,22 +133,22 @@ const SignUpScreen: React.FC = () => {
             error={emailError}
           />
           <InputField
-            iconName={require('../assets/icons/eye_off.png')}
             placeholder="Password"
             secureTextEntry={true}
             value={password}
             onChangeText={setPassword}
             onBlur={() => setPasswordError('')}
             error={passwordError}
+            varient="password"
           />
           <InputField
-            iconName={require('../assets/icons/eye_off.png')}
             placeholder="Retype Password"
             secureTextEntry={true}
             value={retypePassword}
             onChangeText={setRetypePassword}
             onBlur={() => setRetypePasswordError('')}
             error={retypePasswordError}
+            varient="password"
           />
           <InputField
             iconName={require('../assets/icons/phone.png')}

@@ -64,12 +64,12 @@ const InputComponent = () => {
           name="password"
           render={({field: {onChange, value}, fieldState: {error}}) => (
             <InputField
-              iconName={require('../assets/icons/eye_off.png')}
               placeholder="Password"
               secureTextEntry={true}
               value={value}
               onChangeText={onChange}
               error={error && error.message ? error.message : ''}
+              varient="password"
             />
           )}
           rules={{required: 'Please enter your password'}}

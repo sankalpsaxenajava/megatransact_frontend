@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 
 const MegaTransactTitle = ({size}: {size: number}) => {
   const styles = StyleSheet.create({
@@ -7,6 +7,7 @@ const MegaTransactTitle = ({size}: {size: number}) => {
       height: 8 * size,
       resizeMode: 'contain',
       marginBottom: 8,
+      alignSelf: 'center',
     },
     title: {
       fontSize: 5 * size,
@@ -24,14 +25,14 @@ const MegaTransactTitle = ({size}: {size: number}) => {
     },
   });
   return (
-    <>
+    <View>
       <Image
         source={require('../assets/logos/MegaTransactLogo.png')}
         style={styles.logo}
       />
       <Text style={styles.title}>MegaTransact</Text>
       <Text style={styles.subtitle}>PROSPERING TOGETHER</Text>
-    </>
+    </View>
   );
 };
 

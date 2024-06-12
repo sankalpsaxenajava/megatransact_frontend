@@ -10,6 +10,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SetupPinScreen from './screens/SetupPinScreen';
 import LoginScreen from './screens/LoginScreen';
 import AccountTypeScreen from './screens/AccountTypeScreen';
+import AppLoadScreen from './screens/AppLoadScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -18,6 +19,11 @@ function App() {
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            name="AppLoad"
+            component={AppLoadScreen}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="Splash"
             component={SplashScreen}

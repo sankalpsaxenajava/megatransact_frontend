@@ -55,56 +55,63 @@ const PinInput: React.FC<PinInputProps> = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <Header title={null} />
-      <TouchableOpacity
-        style={{flex: 1}}
-        activeOpacity={1}
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
-        <View style={{flex: 1}}>
-          <View style={styles.transactionMain}>
-            <Text style={styles.pinText}>
-              Enter your PIN to confirm the transaction
-            </Text>
-            <Text style={styles.accountText}>
-              Enter the transaction PIN you created with your account.
-            </Text>
+    <View style={styles.outerContainer}>
+      <Header title={''} />
+      <SafeAreaView style={styles.safeArea}>
+        <TouchableOpacity
+          style={{flex: 1}}
+          activeOpacity={1}
+          onPress={() => {
+            Keyboard.dismiss();
+          }}>
+          <View style={{flex: 1}}>
+            <View style={styles.transactionMain}>
+              <Text style={styles.pinText}>
+                Enter your PIN to confirm the transaction
+              </Text>
+              <Text style={styles.accountText}>
+                Enter the transaction PIN you created with your account.
+              </Text>
+            </View>
+            <View style={styles.container}>
+              {inputRefs.map((ref, index) => (
+                <TextInput
+                  key={index}
+                  ref={ref}
+                  style={styles.input}
+                  maxLength={1}
+                  keyboardType="numeric"
+                  returnKeyType={index === 4 ? 'done' : 'next'}
+                  onChangeText={text => handleTextChange(text, index)}
+                  onKeyPress={event => handleKeyPress(event, index)}
+                  value={pin[index]} // Ensure value is set
+                  blurOnSubmit={false}
+                />
+              ))}
+            </View>
           </View>
-          <View style={styles.container}>
-            {inputRefs.map((ref, index) => (
-              <TextInput
-                key={index}
-                ref={ref}
-                style={styles.input}
-                maxLength={1}
-                keyboardType="numeric"
-                returnKeyType={index === 4 ? 'done' : 'next'}
-                onChangeText={text => handleTextChange(text, index)}
-                onKeyPress={event => handleKeyPress(event, index)}
-                value={pin[index]} // Ensure value is set
-                blurOnSubmit={false}
-              />
-            ))}
-          </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate('PurchaseSuccessful');
-        }}>
-        <Text style={styles.buttonText}>Authorize Payment</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('PurchaseSuccessful');
+          }}>
+          <Text style={styles.buttonText}>Authorize Payment</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  outerContainer: {
+    flex: 1,
+  },
   safeArea: {
     flex: 1,
+    backgroundColor: 'white',
+    padding: 20,
   },
   container: {
     flexDirection: 'row',
@@ -112,12 +119,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input: {
-    width: 66,
+    width: 55,
     height: 63,
     textAlign: 'center',
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#DDDDDD',
+    borderRadius: 10,
     marginLeft: 2,
   },
   button: {
@@ -127,13 +135,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     //  width: '90%',
-    marginTop: 20,
     height: 60,
-    marginHorizontal: 20,
+    marginBottom: 20,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 18,
   },
   transactionMain: {
     marginHorizontal: 17,
@@ -142,6 +149,7 @@ const styles = StyleSheet.create({
   pinText: {
     color: '#121212',
     fontSize: 24,
+    fontWeight: 'bold',
   },
   accountText: {
     color: '#6A6A6A',

@@ -7,7 +7,7 @@ import VerifyEmailScreen from './screens/VerifyEmailScreen';
 import MobileDataScreen from './screens/Billpayment/MobileDataScreen';
 import {RootStackParamList} from './types/navigationTypes';
 import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
-import TransactionReview from './screens/components/TransactionReview';
+import TransactionReviewScreen from './screens/Billpayment/TransactionReviewScreen';
 import pinInput from './screens/Billpayment/PinInputScreen';
 import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
 import PaymentsScreen from './screens/PaymentsScreen';
@@ -19,7 +19,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Payments"
+          name="PaymentsStack"
           component={PaymentScreens}
           options={{headerShown: false}}
         />
@@ -66,7 +66,7 @@ function PaymentScreens() {
       />
       <PaymentStack.Screen
         name="TransactionReview"
-        component={TransactionReview}
+        component={TransactionReviewScreen}
         options={{headerShown: false}}
       />
       <PaymentStack.Screen

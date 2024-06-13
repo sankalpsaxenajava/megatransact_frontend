@@ -9,7 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Header from './Header';
+import Header from '../components/Header';
 
 // Define the type for a transaction detail item
 interface TransactionDetail {
@@ -23,7 +23,7 @@ const transactionDetails: TransactionDetail[] = [
   {key: 'Biller', value: 'Frank Energy Ltd.'},
 ];
 
-const TransactionReview: React.FC = () => {
+const TransactionReviewScreen: React.FC = () => {
   const navigation = useNavigation(); // Hook for navigation
 
   const renderItem = ({item}: ListRenderItemInfo<TransactionDetail>) => (
@@ -44,20 +44,22 @@ const TransactionReview: React.FC = () => {
         </View>
         <Text style={styles.amountValue}>$400.00</Text>
       </View>
-      <FlatList
-        data={transactionDetails}
-        renderItem={renderItem}
-        keyExtractor={item => item.key}
-        style={styles.detailsSection}
-        ItemSeparatorComponent={ItemSeparator}
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate('PinInput');
-        }}>
-        <Text style={styles.buttonText}>Continue</Text>
-      </TouchableOpacity>
+      <View style={styles.mainContainer}>
+        <FlatList
+          data={transactionDetails}
+          renderItem={renderItem}
+          keyExtractor={item => item.key}
+          style={styles.detailsSection}
+          ItemSeparatorComponent={ItemSeparator}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('PinInput');
+          }}>
+          <Text style={styles.buttonText}>Continue</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -66,16 +68,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  header: {
-    padding: 20,
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  headerText: {
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   amountSection: {
     backgroundColor: '#EDE7F6',
@@ -97,12 +89,12 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   detailsSection: {
-    padding: 20,
+    paddingVertical: 20,
   },
   detailItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 13,
+    marginVertical: 13,
   },
   detailLabel: {
     fontSize: 16,
@@ -110,7 +102,6 @@ const styles = StyleSheet.create({
   },
   detailValue: {
     fontSize: 16,
-    fontWeight: 'bold',
   },
   separator: {
     height: 1,
@@ -125,14 +116,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     //  width: '90%',
-    marginTop: 20,
     height: 60,
-    marginHorizontal: 20,
+    marginBottom: 20,
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
   },
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    display: 'flex',
+    padding: 20,
+  },
 });
 
-export default TransactionReview;
+export default TransactionReviewScreen;

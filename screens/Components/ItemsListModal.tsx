@@ -7,13 +7,15 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  Image,
 } from 'react-native';
+import icons from '../../assets/icons';
 
 // Define the types for the items in the list
 export interface ListItem {
   id: number; // Assuming ID is a number; adjust if needed
   label: string; // The text to display for each item
-  icon?: string;
+  icon?: any;
 }
 
 // Define the props for the ItemsListModal component
@@ -45,7 +47,7 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
 
   const renderItem = ({item}: {item: ListItem}) => {
     const backgroundColor = item.id === selectedItemId ? '#E9F5FE' : 'white';
-
+    console.log(item);
     return (
       <TouchableOpacity onPress={() => handleItemPress(item)}>
         <View
@@ -55,6 +57,8 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
             backgroundColor,
             alignItems: 'center',
           }}>
+          {item.icon && <Image source={icons[item.icon]} />}
+
           <Text style={styles.title}>{item.label}</Text>
         </View>
       </TouchableOpacity>

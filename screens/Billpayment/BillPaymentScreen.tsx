@@ -22,11 +22,18 @@ type SignUpNavigationProp = NativeStackNavigationProp<
 const countryList = [
   {
     id: 1,
-    label: 'india',
+    label: 'New Zealand',
+    icon: 'nzIcon',
   },
   {
     id: 2,
-    label: 'usa',
+    label: 'Africa',
+    icon: 'africaIcon',
+  },
+  {
+    id: 3,
+    label: 'USA',
+    icon: 'usIcon',
   },
 ];
 
@@ -122,75 +129,71 @@ const BillPaymentScreen: React.FC = () => {
   // };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
+    <View style={{flex: 1}}>
       <Header title="" />
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* <Image
-          source={require('../assets/logos/MegaTransactLogo.png')}
-          style={styles.logo}
-        /> */}
 
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
         <Text style={{color: '#121212', fontSize: 20, fontWeight: 'semibold'}}>
           Pay for Bills
         </Text>
-
-        <View style={styles.inputContainer}>
-          <DropDownInput
-            label="Country"
-            placeholder="Select Country"
-            options={countryList}
-            value={country}
-            type="Country"
-            onChangeValue={setCountry}
-          />
-          <DropDownInput
-            label="Category"
-            placeholder="Select Catogory"
-            options={categoryList}
-            value={category}
-            type="Category"
-            onChangeValue={setCategory}
-          />
-          <DropDownInput
-            label="Biller"
-            placeholder="Select Biller"
-            options={billerList}
-            value={biller}
-            type="Biller"
-            onChangeValue={setBiller}
-          />
-          <View>
-            <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
-              Meter Number
-            </Text>
-            <InputField
-              placeholder="Enter Meter Number"
-              secureTextEntry={false}
-              value={meternumber}
-              onChangeText={setMeterNumber}
-              editable={true}
-              // onBlur={() => setEmailError('')}
-              //error={emailError}
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.inputContainer}>
+            <DropDownInput
+              label="Country"
+              placeholder="Select Country"
+              options={countryList}
+              value={country}
+              type="Country"
+              onChangeValue={setCountry}
             />
-          </View>
-          <View>
-            <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
-              Amount
-            </Text>
-            <InputField
-              placeholder="Enter Amount"
-              secureTextEntry={false}
-              value={amount}
-              onChangeText={setAmount}
-              editable={true}
-              // onBlur={() => setEmailError('')}
-              //error={emailError}
+            <DropDownInput
+              label="Category"
+              placeholder="Select Catogory"
+              options={categoryList}
+              value={category}
+              type="Category"
+              onChangeValue={setCategory}
             />
+            <DropDownInput
+              label="Biller"
+              placeholder="Select Biller"
+              options={billerList}
+              value={biller}
+              type="Biller"
+              onChangeValue={setBiller}
+            />
+            <View>
+              <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
+                Meter Number
+              </Text>
+              <InputField
+                placeholder="Enter Meter Number"
+                secureTextEntry={false}
+                value={meternumber}
+                onChangeText={setMeterNumber}
+                editable={true}
+                // onBlur={() => setEmailError('')}
+                //error={emailError}
+              />
+            </View>
+            <View>
+              <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
+                Amount
+              </Text>
+              <InputField
+                placeholder="Enter Amount"
+                secureTextEntry={false}
+                value={amount}
+                onChangeText={setAmount}
+                editable={true}
+                // onBlur={() => setEmailError('')}
+                //error={emailError}
+              />
+            </View>
           </View>
-        </View>
-
+        </ScrollView>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -198,54 +201,21 @@ const BillPaymentScreen: React.FC = () => {
           }}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 30,
+    paddingBottom: 20,
+    backgroundColor: 'white',
   },
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 30,
     backgroundColor: '#fff',
-  },
-  logo: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-    marginBottom: 8,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#6200EA',
-    alignSelf: 'center',
-    fontFamily: 'Manrope-Bold',
-  },
-  subtitle: {
-    fontSize: 10,
-    color: '#290062',
-    alignSelf: 'center',
-    fontFamily: 'Manrope-Regular',
-    paddingBottom: 60,
-  },
-  signupText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000000',
-    alignSelf: 'center',
-    fontFamily: 'Manrope-Regular',
-  },
-  smallText: {
-    fontSize: 14,
-    color: '#707070',
-    marginBottom: 20,
-    alignSelf: 'center',
-    fontFamily: 'Manrope-Regular',
   },
   inputContainer: {
     width: '100%',
@@ -258,14 +228,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    marginTop: 20,
+    //  width: '90%',
     height: 60,
+    marginBottom: 20,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
-    fontFamily: 'Manrope-Bold',
+    fontSize: 18,
   },
   errorText: {
     color: 'red',

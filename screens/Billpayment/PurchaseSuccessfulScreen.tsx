@@ -7,18 +7,25 @@ import {
   NativeSyntheticEvent,
   TextInputKeyPressEventData,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Header from '../components/Header';
 
 type PurchaseSuccessfulProps = {};
 
-const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = () => {
+const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = ({
+  navigation,
+}) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header title={null} />
 
       <View style={styles.main}>
+        <Image
+          source={require('../../assets/icons/purchase-success.png')}
+          style={styles.image}
+        />
         <Text style={styles.pruchaseText}>Data purchase successful</Text>
         <Text style={styles.mobileDataText}>
           Your mobile data has been purchased successfully
@@ -28,7 +35,7 @@ const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          // navigation.navigate('pinInput');
+          navigation.navigate('Payments');
         }}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>
@@ -39,6 +46,7 @@ const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    backgroundColor: 'white',
   },
   main: {
     flex: 1,
@@ -51,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     //  width: '90%',
-    marginTop: 20,
+    marginBottom: 40,
     height: 60,
     marginHorizontal: 20,
     borderColor: '#CEB0F8',
@@ -68,6 +76,11 @@ const styles = StyleSheet.create({
   mobileDataText: {
     fontSize: 14,
     color: '#717171',
+  },
+  image: {
+    width: 150,
+    height: 150,
+    margin: 20,
   },
 });
 

@@ -15,6 +15,8 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ItemsListModal from '../components/ItemsListModal';
 import Header from '../components/Header';
+import DropDownInput from '../components/DropDownInput';
+import InputField from '../components/InputField';
 
 interface InputFieldProps {
   iconName?: any;
@@ -31,6 +33,39 @@ type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'SignUp'
 >;
+
+const countryList = [
+  {
+    id: 1,
+    label: 'india',
+  },
+  {
+    id: 2,
+    label: 'usa',
+  },
+];
+
+const categoryList = [
+  {
+    id: 1,
+    label: 'Electricity',
+  },
+  {
+    id: 2,
+    label: 'Bill Payment',
+  },
+];
+
+const billerList = [
+  {
+    id: 1,
+    label: 'Biller 1',
+  },
+  {
+    id: 2,
+    label: 'Biller 2',
+  },
+];
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9]{10}$/; // Adjust regex based on your country's phone number format
@@ -119,89 +154,40 @@ const BillPaymentScreen: React.FC = () => {
         </Text>
 
         <View style={styles.inputContainer}>
-          <View>
-            <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
-              Country
-            </Text>
-            <TouchableOpacity
-              onPress={() => {
-                setType('Country');
-                setShowmodal(true);
-              }}>
-              <InputField
-                iconName={require('../../assets/icons/arrow_icon.png')}
-                placeholder="Select Country"
-                secureTextEntry={false}
-                value={country}
-                onChangeText={setCountry}
-                editable={false}
-                // onBlur={() => setEmailError('')}
-                //error={emailError}
-              />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
-              Category
-            </Text>
-            <TouchableOpacity
-              onPress={() => {
-                setType('Category');
-                setShowmodal(true);
-              }}>
-              <InputField
-                iconName={require('../../assets/icons/arrow_icon.png')}
-                placeholder="Select category"
-                secureTextEntry={false}
-                value={category}
-                onChangeText={setCategory}
-                editable={false}
-                // onBlur={() => setEmailError('')}
-                //error={emailError}
-              />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
-              Biller
-            </Text>
-            <TouchableOpacity
-              onPress={() => {
-                setType('Biller');
-                setShowmodal(true);
-              }}>
-              <InputField
-                iconName={require('../../assets/icons/arrow_icon.png')}
-                placeholder="Select Biller"
-                secureTextEntry={false}
-                value={biller}
-                onChangeText={setBiller}
-                editable={false}
-                // onBlur={() => setEmailError('')}
-                //error={emailError}
-              />
-            </TouchableOpacity>
-          </View>
+          <DropDownInput
+            label="Country"
+            placeholder="Select Country"
+            options={countryList}
+            value={country}
+            onChangeValue={setCountry}
+          />
+          <DropDownInput
+            label="Category"
+            placeholder="Select Catogory"
+            options={categoryList}
+            value={category}
+            onChangeValue={setCategory}
+          />
+          <DropDownInput
+            label="Biller"
+            placeholder="Select Biller"
+            options={billerList}
+            value={biller}
+            onChangeValue={setBiller}
+          />
           <View>
             <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
               Meter Number
             </Text>
-            <TouchableOpacity
-              onPress={() => {
-                setType('Meter');
-                setShowmodal(true);
-              }}>
-              <InputField
-                iconName={require('../../assets/icons/arrow_icon.png')}
-                placeholder="Enter Meter Number "
-                secureTextEntry={false}
-                value={meternumber}
-                onChangeText={setMeterNumber}
-                editable={false}
-                // onBlur={() => setEmailError('')}
-                //error={emailError}
-              />
-            </TouchableOpacity>
+            <InputField
+              placeholder="Enter Meter Number"
+              secureTextEntry={false}
+              value={meternumber}
+              onChangeText={setMeterNumber}
+              editable={true}
+              // onBlur={() => setEmailError('')}
+              //error={emailError}
+            />
           </View>
           <View>
             <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
@@ -227,71 +213,9 @@ const BillPaymentScreen: React.FC = () => {
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
       </ScrollView>
-      {showmodal && (
-        <ItemsListModal
-          // onTryAgainClick={selectItem}
-          onDismiss={() => {
-            setShowmodal(false);
-          }}
-          type={type}
-          itemsList={
-            type == 'Category'
-              ? [
-                  {
-                    id: 1,
-                    label: 'Electricity',
-                  },
-                  {
-                    id: 2,
-                    label: 'Bill Payment',
-                  },
-                ]
-              : [
-                  {
-                    id: 1,
-                    label: 'india',
-                  },
-                  {
-                    id: 2,
-                    label: 'usa',
-                  },
-                ]
-          }
-          // itemIndex={
-          //  0
-          // }
-        />
-      )}
     </KeyboardAvoidingView>
   );
 };
-
-const InputField: React.FC<InputFieldProps> = ({
-  iconName,
-  placeholder,
-  secureTextEntry,
-  value,
-  onChangeText,
-  onBlur,
-  error,
-  editable,
-}) => (
-  <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
-    <TextInput
-      placeholder={placeholder}
-      secureTextEntry={secureTextEntry}
-      style={styles.input}
-      placeholderTextColor="#ccc"
-      value={value}
-      onChangeText={onChangeText}
-      onBlur={onBlur}
-      editable={editable}
-      pointerEvents="none"
-    />
-    {!!error && <Text style={styles.errorText}>{error}</Text>}
-    {iconName && <Image source={iconName} style={styles.inputIcon} />}
-  </View>
-);
 
 const styles = StyleSheet.create({
   container: {
@@ -341,32 +265,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 20,
     paddingTop: 30,
-  },
-  inputField: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: '#CFCFCF',
-    marginBottom: 10,
-    borderRadius: 8,
-    backgroundColor: '#FFF',
-    width: '100%',
-    paddingTop: 3,
-    paddingRight: 20,
-    paddingBottom: 3,
-    paddingLeft: 13,
-    height: 60,
-  },
-  inputIcon: {
-    width: 24,
-    height: 24,
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    fontFamily: 'Manrope-Regular',
-    color: '#000000',
   },
   button: {
     backgroundColor: '#6200EA',

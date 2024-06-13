@@ -10,9 +10,10 @@ import {
 } from 'react-native';
 
 // Define the types for the items in the list
-interface ListItem {
+export interface ListItem {
   id: number; // Assuming ID is a number; adjust if needed
   label: string; // The text to display for each item
+  icon?: string;
 }
 
 // Define the props for the ItemsListModal component
@@ -20,7 +21,7 @@ interface ItemsListModalProps {
   onDismiss: () => void; // Function to handle modal dismissal
   type: string; // The type of item to select
   itemsList: ListItem[]; // The list of items to display
-  onTryAgainClick: (item: ListItem) => void; // Function to handle item selection
+  onTryAgainClick?: (item: ListItem) => void; // Function to handle item selection
 }
 
 const ItemsListModal: FC<ItemsListModalProps> = ({

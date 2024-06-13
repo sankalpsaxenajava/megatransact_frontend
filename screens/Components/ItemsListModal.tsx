@@ -21,21 +21,21 @@ interface ItemsListModalProps {
   onDismiss: () => void; // Function to handle modal dismissal
   type: string; // The type of item to select
   itemsList: ListItem[]; // The list of items to display
-  onTryAgainClick?: (item: ListItem) => void; // Function to handle item selection
+  handleModalInput: (item: ListItem) => void; // Function to handle item selection
 }
 
 const ItemsListModal: FC<ItemsListModalProps> = ({
   onDismiss,
   type,
   itemsList,
-  onTryAgainClick,
+  handleModalInput,
 }) => {
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleItemPress = (item: ListItem) => {
-    setSelectedItemId(item.id);
+    handleModalInput(item);
     //  onTryAgainClick(item);
   };
 

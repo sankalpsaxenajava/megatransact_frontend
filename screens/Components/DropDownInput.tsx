@@ -8,6 +8,7 @@ interface DropDownInputProps {
   placeholder: string;
   options: ListItem;
   value: string;
+  type: string;
   onChangeValue: (text: string) => void;
 }
 
@@ -16,9 +17,15 @@ const DropDownInput: React.FC<DropDownInputProps> = ({
   placeholder,
   options,
   value,
+  type,
   onChangeValue,
 }) => {
   const [openModal, setOpenModal] = useState(false);
+
+  const handleModalInput = val => {
+    onChangeValue(val.label);
+    setOpenModal(false);
+  };
 
   return (
     <View>
@@ -46,6 +53,7 @@ const DropDownInput: React.FC<DropDownInputProps> = ({
           }}
           type={type}
           itemsList={options}
+          handleModalInput={handleModalInput}
         />
       )}
     </View>

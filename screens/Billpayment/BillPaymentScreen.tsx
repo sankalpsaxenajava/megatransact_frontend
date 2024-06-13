@@ -2,32 +2,17 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-  Image,
   KeyboardAvoidingView,
   Platform,
-  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import ItemsListModal from '../components/ItemsListModal';
 import Header from '../components/Header';
 import DropDownInput from '../components/DropDownInput';
 import InputField from '../components/InputField';
-
-interface InputFieldProps {
-  iconName?: any;
-  placeholder: string;
-  secureTextEntry: boolean;
-  value: string;
-  onChangeText: (text: string) => void;
-  onBlur: () => void;
-  error: string;
-  editable: boolean;
-}
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -77,8 +62,6 @@ const BillPaymentScreen: React.FC = () => {
   const [biller, setBiller] = useState('');
   const [meternumber, setMeterNumber] = useState('');
   const [amount, setAmount] = useState('');
-  const [showmodal, setShowmodal] = useState(false);
-  const [type, setType] = useState(null);
 
   // const validateInput = () => {
   //   let valid = true;
@@ -159,6 +142,7 @@ const BillPaymentScreen: React.FC = () => {
             placeholder="Select Country"
             options={countryList}
             value={country}
+            type="Country"
             onChangeValue={setCountry}
           />
           <DropDownInput
@@ -166,6 +150,7 @@ const BillPaymentScreen: React.FC = () => {
             placeholder="Select Catogory"
             options={categoryList}
             value={category}
+            type="Category"
             onChangeValue={setCategory}
           />
           <DropDownInput
@@ -173,6 +158,7 @@ const BillPaymentScreen: React.FC = () => {
             placeholder="Select Biller"
             options={billerList}
             value={biller}
+            type="Biller"
             onChangeValue={setBiller}
           />
           <View>

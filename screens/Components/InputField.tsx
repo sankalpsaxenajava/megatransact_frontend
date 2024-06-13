@@ -49,11 +49,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#FFF',
     width: '100%',
-    paddingTop: 3,
+    paddingVertical: 2,
     paddingRight: 20,
-    paddingBottom: 3,
-    paddingLeft: 13,
-    height: 60,
+    paddingLeft: 10,
+    height: 50,
   },
   inputIcon: {
     width: 24,
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Manrope-Regular',
     color: '#000000',
   },

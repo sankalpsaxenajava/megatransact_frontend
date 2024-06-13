@@ -50,14 +50,13 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
       <TouchableOpacity onPress={() => handleItemPress(item)}>
         <View
           style={{
-            height: 66,
+            height: 50,
             flexDirection: 'row',
             backgroundColor,
             alignItems: 'center',
           }}>
           <Text style={styles.title}>{item.label}</Text>
         </View>
-        <View style={styles.separator} />
       </TouchableOpacity>
     );
   };
@@ -115,13 +114,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 22,
     borderTopRightRadius: 22,
-    padding: 20,
+    paddingHorizontal: 30,
+    paddingTop: 50,
+    paddingBottom: 30,
     width: '100%',
     maxHeight: 400,
   },
   topView: {
     height: 50,
-    marginVertical: 20,
+    marginVertical: 15,
   },
   title: {
     fontSize: 16,
@@ -131,16 +132,15 @@ const styles = StyleSheet.create({
   separator: {
     height: 1, // Changed from 0 to 1 for visible separation
     backgroundColor: 'grey',
-    marginVertical: 4,
+    marginVertical: 2,
   },
   searchInput: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     backgroundColor: '#F6F6F6',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'grey',
+    borderWidth: 0,
     width: 350,
-    height: 66,
+    height: 50,
   },
   emptyContainer: {
     flex: 1,

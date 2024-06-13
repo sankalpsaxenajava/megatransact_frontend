@@ -3,11 +3,11 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 // Define the HeaderComponent with a centered title
-interface HeaderComponentProps {
+interface HeaderProps {
   title: string; // Ensure this is a string
 }
 
-const HeaderComponent: React.FC<HeaderComponentProps> = ({title}) => {
+const Header: React.FC<HeaderProps> = ({title}) => {
   const navigation = useNavigation();
 
   // Safely render the title within <Text>
@@ -41,15 +41,18 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute', // Position absolutely for fixed placement
     left: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    width: 20,
+    height: 20,
   },
   backIcon: {
-    width: 24,
-    height: 24,
+    resizeMode: 'contain',
+    width: 20,
+    height: 20,
     tintColor: '#333', // Optional tint for consistent color
-    borderRadius: 59.26, // Round corners (higher value creates a circular image)
-    borderWidth: 1.14, // Border thickness
-    borderColor: '#F6F6F6', // Border color (adjust as needed)
-    padding: 20,
   },
   headerText: {
     fontSize: 20,
@@ -57,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HeaderComponent;
+export default Header;

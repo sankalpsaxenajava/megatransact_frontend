@@ -7,9 +7,9 @@ import VerifyEmailScreen from './screens/VerifyEmailScreen';
 import MobileDataScreen from './screens/DataPurchaseScreens/MobileDataScreen';
 import {RootStackParamList} from './types/navigationTypes';
 import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
-import TransactionReview from './screens/Components/TransactionReview';
-import pinInput from './screens/Billpayment/pinInput';
-import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessful';
+import TransactionReview from './screens/components/TransactionReview';
+import pinInput from './screens/Billpayment/PinInputScreen';
+import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
 import PaymentsScreen from './screens/PaymentsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

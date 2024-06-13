@@ -10,8 +10,8 @@ import {
   Keyboard,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import HeaderComponent from '../Components/HeaderComponent';
 import {useNavigation} from '@react-navigation/native';
+import Header from '../components/Header';
 
 type PinInputProps = {};
 
@@ -56,7 +56,7 @@ const PinInput: React.FC<PinInputProps> = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <HeaderComponent title={null} />
+      <Header title={null} />
       <TouchableOpacity
         style={{flex: 1}}
         activeOpacity={1}

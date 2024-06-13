@@ -9,14 +9,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import HeaderComponent from '../Components/HeaderComponent';
+import Header from '../components/Header';
 
 type PurchaseSuccessfulProps = {};
 
 const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <HeaderComponent title={null} />
+      <Header title={null} />
 
       <View style={styles.main}>
         <Text style={styles.pruchaseText}>Data purchase successful</Text>

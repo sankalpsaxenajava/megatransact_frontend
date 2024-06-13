@@ -1,5 +1,5 @@
 import {Image, Pressable, View, Text, StyleSheet} from 'react-native';
-import icons from '../icons';
+import icons from '../../assets/icons';
 interface ListItemProp {
   icon: string;
   mainText: string;

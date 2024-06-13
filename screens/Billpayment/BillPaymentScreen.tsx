@@ -13,7 +13,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import ItemsListModal from '../Components/ItemsListModal';
+import ItemsListModal from '../components/ItemsListModal';
+import Header from '../components/Header';
 
 interface InputFieldProps {
   iconName?: any;
@@ -111,7 +112,7 @@ const BillPaymentScreen: React.FC = () => {
           source={require('../assets/logos/MegaTransactLogo.png')}
           style={styles.logo}
         /> */}
-
+        <Header title="Pay for Bills" />
         <Text style={{color: '#121212', fontSize: 20, marginHorizontal: 5}}>
           Pay for Bills
         </Text>

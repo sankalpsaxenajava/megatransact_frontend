@@ -9,7 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import HeaderComponent from './HeaderComponent';
+import Header from './Header';
 
 // Define the type for a transaction detail item
 interface TransactionDetail {
@@ -37,7 +37,7 @@ const TransactionReview: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <HeaderComponent title="Review Transaction" />
+      <Header title="Review Transaction" />
       <View style={styles.amountSection}>
         <View style={styles.amountMain}>
           <Text style={styles.amountLabel}>Utility Bill Amount</Text>

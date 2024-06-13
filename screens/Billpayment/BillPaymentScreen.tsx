@@ -107,13 +107,14 @@ const BillPaymentScreen: React.FC = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
+      <Header title="" />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {/* <Image
           source={require('../assets/logos/MegaTransactLogo.png')}
           style={styles.logo}
         /> */}
-        <Header title="Pay for Bills" />
-        <Text style={{color: '#121212', fontSize: 20, marginHorizontal: 5}}>
+
+        <Text style={{color: '#121212', fontSize: 20, fontWeight: 'semibold'}}>
           Pay for Bills
         </Text>
 
@@ -298,9 +299,8 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
-    // alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    paddingHorizontal: 30,
     backgroundColor: '#fff',
   },
   logo: {

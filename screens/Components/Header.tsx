@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center', // This centers the title
     padding: 20,
+    backgroundColor: 'white',
     borderBottomColor: '#ccc',
     position: 'relative', // To allow absolute positioning of the back button
   },
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    color: 'rgba(18, 18, 18, 1)',
+    fontWeight: 'semibold',
   },
 });
 

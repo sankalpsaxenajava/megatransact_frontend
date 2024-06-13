@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import ListItem from '../assets/components/ListItem';
 
-const BillPaymentScreen: React.FC = ({navigation}) => {
+const PaymentsScreen: React.FC = ({navigation}) => {
   const listData = [
     {
       icon: 'userIcon',
@@ -25,7 +25,8 @@ const BillPaymentScreen: React.FC = ({navigation}) => {
       mainText: 'Pay Bills',
       description: 'Pay bills at your Fingertips',
       onPress: () => {
-        console.log('nav to pay bill screen');
+        console.log('nav to mobile data screen');
+        navigation.navigate('BillPaymentStack', {screen: 'BillPayment'});
       },
     },
   ];
@@ -59,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BillPaymentScreen;
+export default PaymentsScreen;

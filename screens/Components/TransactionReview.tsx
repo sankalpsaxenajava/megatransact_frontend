@@ -54,7 +54,7 @@ const TransactionReview: React.FC = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('pinInput');
+          navigation.navigate('PinInput');
         }}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>

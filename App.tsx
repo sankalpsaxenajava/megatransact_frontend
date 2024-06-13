@@ -4,7 +4,7 @@ import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUpScreen from './screens/SignUpScreen';
 import VerifyEmailScreen from './screens/VerifyEmailScreen';
-import MobileDataScreen from './screens/DataPurchaseScreens/MobileDataScreen';
+import MobileDataScreen from './screens/Billpayment/MobileDataScreen';
 import {RootStackParamList} from './types/navigationTypes';
 import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
 import TransactionReview from './screens/components/TransactionReview';
@@ -20,18 +20,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen
           name="Payments"
-          component={PaymentsScreen}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="DataPurchaseStack"
-          component={DataPurchaseScreens}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="BillPaymentStack"
-          component={BillPaymentScreens}
+          component={PaymentScreens}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -49,12 +38,17 @@ function App() {
   );
 }
 
-const DataPurchaseStack = createNativeStackNavigator();
+const PaymentStack = createNativeStackNavigator();
 
-function DataPurchaseScreens() {
+function PaymentScreens() {
   return (
-    <DataPurchaseStack.Navigator>
-      <Stack.Screen
+    <PaymentStack.Navigator>
+      <PaymentStack.Screen
+        name="Payments"
+        component={PaymentsScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
         name="MobileData"
         component={MobileDataScreen}
         options={{
@@ -65,36 +59,27 @@ function DataPurchaseScreens() {
           headerShadowVisible: false,
         }}
       />
-    </DataPurchaseStack.Navigator>
-  );
-}
-
-const BillPaymentStack = createNativeStackNavigator();
-
-function BillPaymentScreens() {
-  return (
-    <BillPaymentStack.Navigator>
-      <Stack.Screen
+      <PaymentStack.Screen
         name="BillPayment"
         component={BillPaymentScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+      <PaymentStack.Screen
         name="TransactionReview"
         component={TransactionReview}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="pinInput"
+      <PaymentStack.Screen
+        name="PinInput"
         component={pinInput}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+      <PaymentStack.Screen
         name="PurchaseSuccessful"
         component={PurchaseSuccessful}
         options={{headerShown: false}}
       />
-    </BillPaymentStack.Navigator>
+    </PaymentStack.Navigator>
   );
 }
 

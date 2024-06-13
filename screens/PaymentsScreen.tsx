@@ -17,7 +17,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       description: 'Select a data plan that fits you',
       onPress: () => {
         console.log('nav to mobile data screen');
-        navigation.navigate('DataPurchaseStack', {screen: 'MobileData'});
+        navigation.navigate('MobileData');
       },
     },
     {
@@ -26,7 +26,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       description: 'Pay bills at your Fingertips',
       onPress: () => {
         console.log('nav to mobile data screen');
-        navigation.navigate('BillPaymentStack', {screen: 'BillPayment'});
+        navigation.navigate('BillPayment');
       },
     },
   ];

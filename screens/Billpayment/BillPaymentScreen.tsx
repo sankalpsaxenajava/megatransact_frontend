@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import Header from '../components/Header';
-import DropDownInput from '../components/DropDownInput';
-import InputField from '../components/InputField';
+import Header from '../Components/Header';
+import DropDownInput from '../Components/DropDownInput';
+import InputField from '../Components/InputField';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,

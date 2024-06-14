@@ -12,7 +12,6 @@ import LoginScreen from './screens/LoginScreen';
 import AccountTypeScreen from './screens/AccountTypeScreen';
 import AppLoadScreen from './screens/AppLoadScreen';
 import MobileDataScreen from './screens/Billpayment/MobileDataScreen';
-import {RootStackParamList} from './types/navigationTypes';
 import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
 import TransactionReviewScreen from './screens/Billpayment/TransactionReviewScreen';
 import pinInput from './screens/Billpayment/PinInputScreen';

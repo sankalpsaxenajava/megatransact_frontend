@@ -51,13 +51,7 @@ function PaymentScreens() {
       <PaymentStack.Screen
         name="MobileData"
         component={MobileDataScreen}
-        options={{
-          title: '',
-          headerStyle: {
-            backgroundColor: 'white',
-          },
-          headerShadowVisible: false,
-        }}
+        options={{headerShown: false}}
       />
       <PaymentStack.Screen
         name="BillPayment"

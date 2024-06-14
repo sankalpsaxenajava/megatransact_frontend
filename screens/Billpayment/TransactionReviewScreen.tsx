@@ -17,14 +17,27 @@ interface TransactionDetail {
   value: string;
 }
 
-const transactionDetails: TransactionDetail[] = [
-  {key: 'Amount', value: '$400.00'},
-  {key: 'Meter Number', value: 'M0746P76389'},
-  {key: 'Biller', value: 'Frank Energy Ltd.'},
-];
-
-const TransactionReviewScreen: React.FC = () => {
+const TransactionReviewScreen: React.FC = ({route}) => {
   const navigation = useNavigation(); // Hook for navigation
+
+  const {transactionDetail} = route.params;
+  // Function to format the amount to a currency format
+  const formatToCurrency = value => {
+    if (isNaN(value)) {
+      return value;
+    }
+    return value.toFixed(2);
+  };
+
+  // Format the "Amount" value and update the array
+  const updatedTransactionDetail = transactionDetail.map(detail => {
+    if (detail.key === 'Amount') {
+      return {...detail, value: `$${formatToCurrency(detail.value)}`};
+    }
+    return detail;
+  });
+
+  console.log(updatedTransactionDetail);
 
   const renderItem = ({item}: ListRenderItemInfo<TransactionDetail>) => (
     <View style={styles.detailItem}>
@@ -42,11 +55,16 @@ const TransactionReviewScreen: React.FC = () => {
         <View style={styles.amountMain}>
           <Text style={styles.amountLabel}>Utility Bill Amount</Text>
         </View>
-        <Text style={styles.amountValue}>$400.00</Text>
+        <Text style={styles.amountValue}>
+          {
+            updatedTransactionDetail.find(detail => detail.key === 'Amount')
+              .value
+          }
+        </Text>
       </View>
       <View style={styles.mainContainer}>
         <FlatList
-          data={transactionDetails}
+          data={updatedTransactionDetail}
           renderItem={renderItem}
           keyExtractor={item => item.key}
           style={styles.detailsSection}

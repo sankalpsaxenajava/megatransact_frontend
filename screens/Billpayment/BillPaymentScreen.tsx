@@ -197,7 +197,14 @@ const BillPaymentScreen: React.FC = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate('TransactionReview');
+            navigation.navigate('TransactionReview', {
+              // TODO: change to dynamic value later
+              transactionDetail: [
+                {key: 'Amount', value: 400.0},
+                {key: 'Meter Number', value: 'M0746P76389'},
+                {key: 'Biller', value: 'Frank Energy Ltd.'},
+              ],
+            });
           }}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>

@@ -1,6 +1,6 @@
 // App.tsx
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUpScreen from './screens/SignUpScreen';
 import VerifyEmailScreen from './screens/VerifyEmailScreen';
@@ -11,6 +11,12 @@ import SetupPinScreen from './screens/SetupPinScreen';
 import LoginScreen from './screens/LoginScreen';
 import AccountTypeScreen from './screens/AccountTypeScreen';
 import AppLoadScreen from './screens/AppLoadScreen';
+import MobileDataScreen from './screens/Billpayment/MobileDataScreen';
+import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
+import TransactionReviewScreen from './screens/Billpayment/TransactionReviewScreen';
+import pinInput from './screens/Billpayment/PinInputScreen';
+import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
+import PaymentsScreen from './screens/PaymentsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +25,11 @@ function App() {
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            name="PaymentsStack"
+            component={PaymentScreens}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="AppLoad"
             component={AppLoadScreen}
@@ -57,6 +68,45 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
+  );
+}
+
+const PaymentStack = createNativeStackNavigator();
+
+function PaymentScreens() {
+  return (
+    <PaymentStack.Navigator>
+      <PaymentStack.Screen
+        name="Payments"
+        component={PaymentsScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="MobileData"
+        component={MobileDataScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="BillPayment"
+        component={BillPaymentScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="TransactionReview"
+        component={TransactionReviewScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="PinInput"
+        component={pinInput}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="PurchaseSuccessful"
+        component={PurchaseSuccessful}
+        options={{headerShown: false}}
+      />
+    </PaymentStack.Navigator>
   );
 }
 

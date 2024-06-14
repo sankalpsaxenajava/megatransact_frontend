@@ -46,7 +46,7 @@ const MobileDataScreen = ({navigation}) => {
   const [network, setNetwork] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [dataPlan, setDataPlan] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
 
   return (
     <View style={{flex: 1}}>
@@ -81,7 +81,7 @@ const MobileDataScreen = ({navigation}) => {
               placeholder="Select Data Plan"
               options={dataPlanList}
               value={dataPlan}
-              type="Biller"
+              type="Data Plan"
               onChangeValue={setDataPlan}
             />
             <View>
@@ -107,7 +107,7 @@ const MobileDataScreen = ({navigation}) => {
                 secureTextEntry={false}
                 value={amount}
                 onChangeText={setAmount}
-                editable={false}
+                editable={true}
                 // onBlur={() => setEmailError('')}
                 //error={emailError}
               />
@@ -120,10 +120,10 @@ const MobileDataScreen = ({navigation}) => {
             navigation.navigate('TransactionReview', {
               // TODO: change to dynamic value later
               transactionDetail: [
-                {key: 'Amount', value: 400.0},
-                {key: 'Phone Number', value: 'M0746P76389'},
-                {key: 'Plan', value: 'Frank Energy Ltd.'},
-                {key: 'Network', value: 'Frank Energy Ltd.'},
+                {key: 'Amount', value: parseFloat(amount)},
+                {key: 'Phone Number', value: phoneNumber},
+                {key: 'Plan', value: dataPlan},
+                {key: 'Network', value: network},
               ],
             });
           }}>

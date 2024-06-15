@@ -9,6 +9,7 @@ import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
 import TransactionReview from './screens/Components/TransactionReview';
 import pinInput from './screens/Billpayment/pinInput';
 import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessful';
+import MobileDataScreen from './screens/Billpayment/MobileDataScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -44,6 +45,11 @@ function App() {
         <Stack.Screen
           name="PurchaseSuccessful"
           component={PurchaseSuccessful}
+          options={{headerShown: false}}
+        />
+          <Stack.Screen
+          name="MobileDataScreen"
+          component={MobileDataScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

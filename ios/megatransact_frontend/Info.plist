@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSContactsUsageDescription</key>
+    <string>$(PRODUCT_NAME) would like to access your contacts</string>
 	<key>CFBundleDisplayName</key>
 	<string>megatransact_frontend</string>
 	<key>CFBundleExecutable</key>

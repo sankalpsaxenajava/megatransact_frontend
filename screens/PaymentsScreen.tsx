@@ -9,6 +9,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       description: 'Top up your airtime easily',
       onPress: () => {
         console.log('nav to airtime screen');
+        navigation.navigate('AirtimePurchase');
       },
     },
     {

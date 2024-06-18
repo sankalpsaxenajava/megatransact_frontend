@@ -6,4 +6,6 @@ export type RootStackParamList = {
   SetupPin: undefined;
   SignUp: undefined;
   VerifyEmail: undefined;
+  PaymentsStack: undefined;
+  PayWithCardScreen: undefined;
 };

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Dimensions, Image, ImageBackground, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {LinearGradient} from 'react-native-linear-gradient';
+import {interpolateColor} from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
 
 const BalanceComponent = ({desc, balance}: {desc: string; balance: number}) => {
@@ -27,10 +28,33 @@ const HeaderComponent = ({colorIndex}: {colorIndex: number}) => {
     ['#5872FB', '#4F7AF9', '#2D93E5'],
   ];
 
+  function getColors(pos: number) {
+    const fromColors = color_scheme[Math.floor(pos)];
+    const toColors = color_scheme[Math.ceil(pos)];
+    const progress = pos - Math.floor(pos);
+
+    const left_color = interpolateColor(
+      progress,
+      [0, 1],
+      [fromColors[0], toColors[0]],
+    );
+    const central_color = interpolateColor(
+      progress,
+      [0, 1],
+      [fromColors[1], toColors[1]],
+    );
+    const right_color = interpolateColor(
+      progress,
+      [0, 1],
+      [fromColors[2], toColors[2]],
+    );
+
+    return [left_color, central_color, right_color];
+  }
   return (
     <View className="h-[24%] w-full">
       <LinearGradient
-        colors={color_scheme[colorIndex]}
+        colors={getColors(colorIndex)}
         useAngle={true}
         angle={15}
         locations={[0.25, 0.5, 1]}
@@ -100,11 +124,11 @@ const CardScrollViewComponent = ({
           parallaxScrollingScale: 0.9,
           parallaxScrollingOffset: 70,
         }}
+        onProgressChange={offSet => setColorIndex(Math.abs(offSet / width))}
         loop={false}
         width={width}
         height={height * 0.6}
         data={cards}
-        onSnapToItem={index => setColorIndex(cards[index].color)}
         renderItem={({item}) => (
           <ImageBackground
             source={item.bg_url}

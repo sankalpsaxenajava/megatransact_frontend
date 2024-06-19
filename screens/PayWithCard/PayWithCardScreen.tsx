@@ -13,6 +13,7 @@ import {InputField} from '../../components/InputField';
 import {RootStackParamList} from '../../types/navigationTypes';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
+import {BalanceComponent} from '../../components/BalanceComponent';
 
 // temporary model - update with schema models
 export type PayWithCardForm = {
@@ -27,23 +28,6 @@ type PayWithCardsNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
   'PayWithCard'
 >;
-
-const BalanceComponent = ({desc, balance}: {desc: string; balance: number}) => {
-  const balance_int = Math.floor(balance);
-  const balance_frac = Math.floor((balance - balance_int) * 100);
-
-  return (
-    <View className="px-2 gap-1">
-      <Text className="text-white text-lg">{desc}</Text>
-      <View className="flex-row items-end">
-        <Text className="font-manrope text-3xl text-white">
-          ${balance_int}.
-        </Text>
-        <Text className="font-manrope text-white pb-1">{balance_frac}</Text>
-      </View>
-    </View>
-  );
-};
 
 const HeaderComponent = ({colorIndex}: {colorIndex: number}) => {
   const color_scheme = [
@@ -258,7 +242,7 @@ const PaymentFormComponent = ({
           )}
         />
         <TouchableOpacity
-          className="p-4 rounded-lg mt-3"
+          className="p-5 rounded-lg mt-3"
           style={{backgroundColor: button_colors[Math.floor(colorIndex)]}}
           onPress={onSubmit}>
           <Text className="text-center text-white">Continue</Text>

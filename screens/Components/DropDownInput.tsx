@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import InputField from './InputField';
 import ItemsListModal, {ListItem} from './ItemsListModal';
+import {InputField} from '../../components/InputField';
 
 interface DropDownInputProps {
   label: string;
@@ -48,13 +48,10 @@ const DropDownInput: React.FC<DropDownInputProps> = ({
           onChangeText={onChangeValue}
           editable={false}
           labelIcon={selectedItem?.icon}
-          // onBlur={() => setEmailError('')}
-          //error={emailError}
         />
       </TouchableOpacity>
 
       <ItemsListModal
-        // onTryAgainClick={selectItem}
         onDismiss={() => {
           setOpenModal(false);
         }}

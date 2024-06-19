@@ -12,8 +12,8 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import Header from '../Components/Header';
 import DropDownInput from '../Components/DropDownInput';
-import InputField from '../Components/InputField';
 import {countryList, categoryList, billerList} from '../../types/mockData';
+import {InputField} from '../../components/InputField';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,

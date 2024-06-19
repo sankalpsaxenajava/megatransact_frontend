@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import Header from '../Components/Header';
 import DropDownInput from '../Components/DropDownInput';
-import InputField from '../Components/InputField';
 import {countryList, dataPlanList, networkList} from '../../types/mockData';
+import {InputField} from '../../components/InputField';
 
 const MobileDataScreen = ({navigation}) => {
   const [country, setCountry] = useState('');

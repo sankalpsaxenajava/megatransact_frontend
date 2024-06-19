@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import icons from '../assets/icons';
 
 export const InputField: React.FC<InputFieldProps> = ({
   iconName,
@@ -17,10 +18,17 @@ export const InputField: React.FC<InputFieldProps> = ({
   onBlur,
   error,
   varient,
+  keyboardType = 'default',
+  editable = true,
+  labelIcon,
 }) => {
   const [isHidden, setIsHidden] = useState(true);
   return (
     <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
+      {varient == 'money' && <Text className="text-base mr-2">$</Text>}
+      {labelIcon && (
+        <Image source={icons[labelIcon]} className="w-5 h-5 mr-2" />
+      )}
       <TextInput
         placeholder={placeholder}
         secureTextEntry={varient == 'password' ? isHidden : secureTextEntry}
@@ -29,6 +37,9 @@ export const InputField: React.FC<InputFieldProps> = ({
         value={value}
         onChangeText={onChangeText}
         onBlur={onBlur}
+        keyboardType={keyboardType}
+        editable={editable}
+        pointerEvents={editable ? 'auto' : 'none'}
       />
       {!!error && <Text style={styles.errorText}>{error}</Text>}
       {!varient && iconName && (
@@ -57,8 +68,11 @@ interface InputFieldProps {
   value: string;
   onChangeText: (text: string) => void;
   onBlur?: () => void;
-  error: string;
-  varient?: 'password' | undefined;
+  error?: string;
+  varient?: 'password' | 'money' | undefined;
+  keyboardType?: 'default' | 'numeric';
+  editable?: boolean;
+  labelIcon?: string;
 }
 
 const styles = StyleSheet.create({

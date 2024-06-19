@@ -18,6 +18,7 @@ import pinInput from './screens/Billpayment/PinInputScreen';
 import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
 import PaymentsScreen from './screens/PaymentsScreen';
 import PayWithCardScreen from './screens/PayWithCard/PayWithCardScreen';
+import ReviewPaymentScreen from './screens/PayWithCard/ReviewPaymentScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -27,8 +28,13 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="PayWithCardScreen"
+            name="PayWithCard"
             component={PayWithCardScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ReviewPayment"
+            component={ReviewPaymentScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen

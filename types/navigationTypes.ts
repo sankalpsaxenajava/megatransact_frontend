@@ -1,3 +1,5 @@
+import {PayWithCardForm} from '../screens/PayWithCard/PayWithCardScreen';
+
 export type RootStackParamList = {
   AppLoad: undefined;
   Splash: undefined;
@@ -7,5 +9,8 @@ export type RootStackParamList = {
   SignUp: undefined;
   VerifyEmail: undefined;
   PaymentsStack: undefined;
-  PayWithCardScreen: undefined;
+  PayWithCard: undefined;
+  ReviewPayment: {
+    data: PayWithCardForm;
+  };
 };

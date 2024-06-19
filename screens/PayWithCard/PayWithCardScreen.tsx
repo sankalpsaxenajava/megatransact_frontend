@@ -10,15 +10,23 @@ import DropDownInput from '../Components/DropDownInput';
 import {bankList, cards, currencyList} from '../../types/mockData';
 import {Controller, useForm} from 'react-hook-form';
 import {InputField} from '../../components/InputField';
+import {RootStackParamList} from '../../types/navigationTypes';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 
 // temporary model - update with schema models
-type PayWithCardForm = {
+export type PayWithCardForm = {
   currency: string;
   amount: string;
   recipient_account: string;
   recipient_bank: string;
   description: string;
 };
+
+type PayWithCardsNavigationProps = NativeStackNavigationProp<
+  RootStackParamList,
+  'PayWithCard'
+>;
 
 const BalanceComponent = ({desc, balance}: {desc: string; balance: number}) => {
   const balance_int = Math.floor(balance);
@@ -161,8 +169,12 @@ const PaymentFormComponent = ({
   bottomSheetRef: React.RefObject<BottomSheetMethods>;
   colorIndex: number;
 }) => {
+  const navigation = useNavigation<PayWithCardsNavigationProps>();
   const {control, handleSubmit} = useForm<PayWithCardForm>();
-  const onSubmit = handleSubmit((data: PayWithCardForm) => {});
+  const onSubmit = handleSubmit((data: PayWithCardForm) => {
+    navigation.navigate('ReviewPayment', {data: data});
+  });
+
   // based on chosen card
   const button_colors = ['#6200EA', '#5177F7'];
   return (
@@ -248,7 +260,7 @@ const PaymentFormComponent = ({
         <TouchableOpacity
           className="p-4 rounded-lg mt-3"
           style={{backgroundColor: button_colors[Math.floor(colorIndex)]}}
-          onPress={() => handleSubmit}>
+          onPress={onSubmit}>
           <Text className="text-center text-white">Continue</Text>
         </TouchableOpacity>
       </View>

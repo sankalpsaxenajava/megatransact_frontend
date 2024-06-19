@@ -70,7 +70,11 @@ const ReviewPaymentScreen: React.FC<ReviewPaymentProps> = ({route}) => {
           </View>
         </View>
       </View>
-      <TouchableOpacity className="bg-[#6200EA] p-5 items-center justify-center flex rounded-xl mb-10">
+      <TouchableOpacity
+        className="bg-[#6200EA] p-5 items-center justify-center flex rounded-xl mb-10"
+        onPress={() =>
+          navigation.navigate('PaymentConfirmation', {data: data})
+        }>
         <Text className="text-white">Confirm</Text>
       </TouchableOpacity>
     </View>

@@ -19,6 +19,7 @@ import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
 import PaymentsScreen from './screens/PaymentsScreen';
 import PayWithCardScreen from './screens/PayWithCard/PayWithCardScreen';
 import ReviewPaymentScreen from './screens/PayWithCard/ReviewPaymentScreen';
+import PaymentConfirmationScreen from './screens/PayWithCard/PaymentConfirmationScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -35,6 +36,11 @@ function App() {
           <Stack.Screen
             name="ReviewPayment"
             component={ReviewPaymentScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="PaymentConfirmation"
+            component={PaymentConfirmationScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen

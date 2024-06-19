@@ -13,4 +13,7 @@ export type RootStackParamList = {
   ReviewPayment: {
     data: PayWithCardForm;
   };
+  PaymentConfirmation: {
+    data: PayWithCardForm;
+  };
 };

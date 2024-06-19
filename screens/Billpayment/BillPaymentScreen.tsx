@@ -13,54 +13,12 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import Header from '../Components/Header';
 import DropDownInput from '../Components/DropDownInput';
 import InputField from '../Components/InputField';
+import {countryList, categoryList, billerList} from '../../types/mockData';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'SignUp'
 >;
-
-const countryList = [
-  {
-    id: 1,
-    label: 'New Zealand',
-    icon: 'nzIcon',
-  },
-  {
-    id: 2,
-    label: 'Africa',
-    icon: 'africaIcon',
-  },
-  {
-    id: 3,
-    label: 'USA',
-    icon: 'usIcon',
-  },
-];
-
-const categoryList = [
-  {
-    id: 1,
-    label: 'Electricity',
-  },
-  {
-    id: 2,
-    label: 'Bill Payment',
-  },
-];
-
-const billerList = [
-  {
-    id: 1,
-    label: 'Biller 1',
-  },
-  {
-    id: 2,
-    label: 'Biller 2',
-  },
-];
-
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^[0-9]{10}$/; // Adjust regex based on your country's phone number format
 
 const BillPaymentScreen: React.FC = () => {
   const navigation = useNavigation<SignUpNavigationProp>();
@@ -70,68 +28,9 @@ const BillPaymentScreen: React.FC = () => {
   const [meternumber, setMeterNumber] = useState('');
   const [amount, setAmount] = useState('');
 
-  // const validateInput = () => {
-  //   let valid = true;
-  //   if (!firstName.trim()) {
-  //     setFirstNameError('First name is required');
-  //     valid = false;
-  //   } else {
-  //     setFirstNameError('');
-  //   }
-
-  //   if (!lastName.trim()) {
-  //     setLastNameError('Last name is required');
-  //     valid = false;
-  //   } else {
-  //     setLastNameError('');
-  //   }
-
-  //   if (!emailRegex.test(email)) {
-  //     setEmailError('Please enter a valid email');
-  //     valid = false;
-  //   } else {
-  //     setEmailError('');
-  //   }
-
-  //   if (password.length < 8) {
-  //     setPasswordError('Password must be at least 8 characters');
-  //     valid = false;
-  //   } else {
-  //     setPasswordError('');
-  //   }
-
-  //   if (password !== retypePassword) {
-  //     setRetypePasswordError('Passwords do not match');
-  //     valid = false;
-  //   } else {
-  //     setRetypePasswordError('');
-  //   }
-
-  //   if (phoneNumber && !phoneRegex.test(phoneNumber)) {
-  //     setPhoneNumberError('Please enter a valid phone number');
-  //     valid = false;
-  //   } else {
-  //     setPhoneNumberError('');
-  //   }
-
-  //   return valid;
-  // };
-
-  // const handleSignUp = () => {
-  //   if (validateInput()) {
-  //     navigation.navigate('VerifyEmail');
-  //   } else {
-  //     Alert.alert(
-  //       'Validation Error',
-  //       'Please fix the errors before submitting.',
-  //     );
-  //   }
-  // };
-
   return (
     <View style={{flex: 1}}>
       <Header title="" />
-
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
@@ -174,8 +73,6 @@ const BillPaymentScreen: React.FC = () => {
                 value={meternumber}
                 onChangeText={setMeterNumber}
                 editable={true}
-                // onBlur={() => setEmailError('')}
-                //error={emailError}
               />
             </View>
             <View>
@@ -188,8 +85,6 @@ const BillPaymentScreen: React.FC = () => {
                 value={amount}
                 onChangeText={setAmount}
                 editable={true}
-                // onBlur={() => setEmailError('')}
-                //error={emailError}
               />
             </View>
           </View>

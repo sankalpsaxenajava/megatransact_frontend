@@ -18,6 +18,7 @@ import pinInput from './screens/Billpayment/PinInputScreen';
 import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
 import PaymentsScreen from './screens/PaymentsScreen';
 import AirtimePurchaseScreen from './screens/Billpayment/AirtimePurchaseScreen';
+import BillPaymentOptionScreen from './screens/Billpayment/BillPaymentOptionScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -80,6 +81,11 @@ function PaymentScreens() {
       <PaymentStack.Screen
         name="Payments"
         component={PaymentsScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="PaymentOption"
+        component={BillPaymentOptionScreen}
         options={{headerShown: false}}
       />
       <PaymentStack.Screen

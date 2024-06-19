@@ -1,38 +1,38 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import ListItem from './Components/ListItem';
+import ListItem from '../Components/ListItem';
+import Header from '../Components/Header';
 
-const PaymentsScreen: React.FC = ({navigation}) => {
+const BillPaymentOptionScreen: React.FC = ({navigation, route}) => {
+  const {category} = route.params;
+  console.log(category);
   const listData = [
     {
-      icon: 'userIcon',
-      mainText: 'Buy Airtime',
-      description: 'Top up your airtime easily',
+      icon: 'mpesaIcon',
+      mainText: 'Buy via M-Pesa',
+      description:
+        category === 'AirtimePurchase'
+          ? 'Top up your airtime easily'
+          : 'Purchase mobile data easily',
       onPress: () => {
-        console.log('nav to airtime screen');
-        navigation.navigate('PaymentOption', {category: 'AirtimePurchase'});
+        navigation.navigate(category);
       },
     },
     {
-      icon: 'dataIcon',
-      mainText: 'Buy Mobile Data',
-      description: 'Select a data plan that fits you',
+      icon: 'logo',
+      mainText: 'Buy Directly',
+      description:
+        category === 'AirtimePurchase'
+          ? 'Top up your airtime easily'
+          : 'Purchase mobile data easily',
       onPress: () => {
         console.log('nav to mobile data screen');
-        navigation.navigate('PaymentOption', {category: 'MobileData'});
-      },
-    },
-    {
-      icon: 'scanIcon',
-      mainText: 'Pay Bills',
-      description: 'Pay bills at your Fingertips',
-      onPress: () => {
-        console.log('nav to mobile data screen');
-        navigation.navigate('BillPayment');
+        navigation.navigate(category);
       },
     },
   ];
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={styles.container}>
+      <Header title="" />
       <Text style={styles.heading}>Bill Payment</Text>
       <FlatList
         data={listData}
@@ -51,6 +51,10 @@ const PaymentsScreen: React.FC = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
   heading: {
     fontSize: 22,
     fontWeight: '600',
@@ -61,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PaymentsScreen;
+export default BillPaymentOptionScreen;

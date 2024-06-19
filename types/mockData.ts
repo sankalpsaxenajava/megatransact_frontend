@@ -74,3 +74,24 @@ export const bankList = [
   {id: 1, label: 'Heartland'},
   {id: 2, label: 'Westpac'},
 ];
+
+export const cards = [
+  {
+    bg_url: require('../assets/images/purple_card.png'), // update when moved
+    balance: 620.89,
+    four_digits: 7986,
+    id: 28390038723,
+    date: '20-12-26',
+    bank: 'Heartland',
+    color: 0,
+  },
+  {
+    bg_url: require('../assets/images/blue_card.png'),
+    balance: 1620.89,
+    four_digits: 8120,
+    id: 28390038723,
+    date: '20-12-26',
+    bank: 'Westpac',
+    color: 1,
+  },
+];

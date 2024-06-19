@@ -1,9 +1,24 @@
-import {useState} from 'react';
+import BottomSheet from '@gorhom/bottom-sheet';
+import {BottomSheetMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
+import {useRef, useState} from 'react';
 import {Dimensions, Image, ImageBackground, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {LinearGradient} from 'react-native-linear-gradient';
 import {interpolateColor} from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
+import DropDownInput from '../Components/DropDownInput';
+import {bankList, cards, currencyList} from '../../types/mockData';
+import {Controller, useForm} from 'react-hook-form';
+import {InputField} from '../../components/InputField';
+
+// temporary model - update with schema models
+type PayWithCardForm = {
+  currency: string;
+  amount: string;
+  recipient_account: string;
+  recipient_bank: string;
+  description: string;
+};
 
 const BalanceComponent = ({desc, balance}: {desc: string; balance: number}) => {
   const balance_int = Math.floor(balance);
@@ -88,33 +103,13 @@ const HeaderComponent = ({colorIndex}: {colorIndex: number}) => {
 
 const CardScrollViewComponent = ({
   setColorIndex,
+  sheetRef,
 }: {
   setColorIndex: (val: number) => void;
+  sheetRef: React.RefObject<BottomSheetMethods>;
 }) => {
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
-
-  // mock data for now
-  const cards = [
-    {
-      bg_url: require('../../assets/images/purple_card.png'),
-      balance: 620.89,
-      four_digits: 7986,
-      id: 28390038723,
-      date: '20-12-26',
-      bank: 'Heartland',
-      color: 0,
-    },
-    {
-      bg_url: require('../../assets/images/blue_card.png'),
-      balance: 1620.89,
-      four_digits: 8120,
-      id: 28390038723,
-      date: '20-12-26',
-      bank: 'Westpac',
-      color: 1,
-    },
-  ];
 
   return (
     <View style={{flex: 1}}>
@@ -130,36 +125,152 @@ const CardScrollViewComponent = ({
         height={height * 0.6}
         data={cards}
         renderItem={({item}) => (
-          <ImageBackground
-            source={item.bg_url}
-            resizeMode="contain"
-            className="h-full w-full">
-            <View className="p-10 justify-between flex-col h-full">
-              <BalanceComponent desc="Total Balance" balance={item.balance} />
-              <Text className="text-white text-[26px] w-full text-center">
-                **** ***** ***** ***** {item.four_digits}
-              </Text>
-              <View className="flex-row justify-between items-end">
-                <View>
-                  <Text className="text-white">{item.id}</Text>
-                  <Text className="text-white">{item.date}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              sheetRef.current?.expand();
+            }}>
+            <ImageBackground
+              source={item.bg_url}
+              resizeMode="contain"
+              className="h-full w-full">
+              <View className="p-10 justify-between flex-col h-full">
+                <BalanceComponent desc="Total Balance" balance={item.balance} />
+                <Text className="text-white text-[26px] w-full text-center">
+                  **** ***** ***** ***** {item.four_digits}
+                </Text>
+                <View className="flex-row justify-between items-end">
+                  <View>
+                    <Text className="text-white">{item.id}</Text>
+                    <Text className="text-white">{item.date}</Text>
+                  </View>
+                  <Text className="text-white">{item.bank}</Text>
                 </View>
-                <Text className="text-white">{item.bank}</Text>
               </View>
-            </View>
-          </ImageBackground>
+            </ImageBackground>
+          </TouchableOpacity>
         )}
       />
     </View>
   );
 };
 
+const PaymentFormComponent = ({
+  bottomSheetRef,
+  colorIndex,
+}: {
+  bottomSheetRef: React.RefObject<BottomSheetMethods>;
+  colorIndex: number;
+}) => {
+  const {control, handleSubmit} = useForm<PayWithCardForm>();
+  const onSubmit = handleSubmit((data: PayWithCardForm) => {});
+  // based on chosen card
+  const button_colors = ['#6200EA', '#5177F7'];
+  return (
+    <BottomSheet snapPoints={['15%', '75%']} ref={bottomSheetRef} index={0}>
+      <View className="mx-4">
+        <Controller
+          control={control}
+          name="currency"
+          defaultValue="United States dollar"
+          render={({field: {onChange, value}}) => (
+            <DropDownInput
+              label="Currency to send"
+              placeholder="Currency"
+              options={currencyList}
+              value={value}
+              type="Currency"
+              onChangeValue={onChange}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="amount"
+          render={({field: {onChange, value}}) => (
+            <View>
+              <Text className="my-3">Amount to send</Text>
+              <InputField
+                placeholder="0.00"
+                secureTextEntry={false}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+                varient="money"
+              />
+            </View>
+          )}
+        />
+        <Controller
+          control={control}
+          name="recipient_account"
+          render={({field: {onChange, value}}) => (
+            <View>
+              <Text className="my-3">Recipient account</Text>
+              <InputField
+                placeholder="Account number"
+                secureTextEntry={false}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+              />
+            </View>
+          )}
+        />
+        <Controller
+          control={control}
+          name="recipient_bank"
+          render={({field: {onChange, value}}) => (
+            <DropDownInput
+              label="Recipient bank"
+              placeholder="Bank name"
+              options={bankList}
+              value={value}
+              type="Bank"
+              onChangeValue={onChange}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="description"
+          render={({field: {onChange, value}}) => (
+            <View>
+              <Text className="my-3">Description</Text>
+              <InputField
+                placeholder="Enter description"
+                secureTextEntry={false}
+                value={value}
+                onChangeText={onChange}
+              />
+            </View>
+          )}
+        />
+        <TouchableOpacity
+          className="p-4 rounded-lg mt-3"
+          style={{backgroundColor: button_colors[Math.floor(colorIndex)]}}
+          onPress={() => handleSubmit}>
+          <Text className="text-center text-white">Continue</Text>
+        </TouchableOpacity>
+      </View>
+    </BottomSheet>
+  );
+};
+
 const PayWithCardScreen = () => {
   const [colorIndex, setColorIndex] = useState(0);
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
   return (
     <View className="w-full h-full">
       <HeaderComponent colorIndex={colorIndex} />
-      <CardScrollViewComponent setColorIndex={setColorIndex} />
+      <CardScrollViewComponent
+        setColorIndex={setColorIndex}
+        sheetRef={bottomSheetRef}
+      />
+      <PaymentFormComponent
+        bottomSheetRef={bottomSheetRef}
+        colorIndex={colorIndex}
+      />
     </View>
   );
 };

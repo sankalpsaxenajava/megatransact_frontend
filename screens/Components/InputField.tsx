@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import icons from '../../assets/icons';
 
 interface InputFieldProps {
   iconName?: any;
@@ -10,6 +11,7 @@ interface InputFieldProps {
   onBlur?: () => void;
   error?: string;
   editable?: boolean;
+  labelIcon?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -21,8 +23,10 @@ const InputField: React.FC<InputFieldProps> = ({
   onBlur,
   error,
   editable = true,
+  labelIcon,
 }) => (
   <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
+    {labelIcon && <Image source={icons[labelIcon]} className="w-5 h-5 mx-2" />}
     <TextInput
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}

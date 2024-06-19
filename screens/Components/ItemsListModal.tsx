@@ -3,13 +3,13 @@ import {
   View,
   FlatList,
   Text,
-  Modal,
   TextInput,
   TouchableOpacity,
   StyleSheet,
   Image,
 } from 'react-native';
 import icons from '../../assets/icons';
+import Modal from 'react-native-modal/dist/modal';
 
 // Define the types for the items in the list
 export interface ListItem {
@@ -24,6 +24,8 @@ interface ItemsListModalProps {
   type: string; // The type of item to select
   itemsList: ListItem[]; // The list of items to display
   handleModalInput: (item: ListItem) => void; // Function to handle item selection
+  selectedItemId: number | undefined;
+  isModalOpen: boolean;
 }
 
 const ItemsListModal: FC<ItemsListModalProps> = ({
@@ -31,9 +33,9 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
   type,
   itemsList,
   handleModalInput,
+  selectedItemId,
+  isModalOpen,
 }) => {
-  const [selectedItemId, setSelectedItemId] = useState(null);
-
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleItemPress = (item: ListItem) => {
@@ -54,11 +56,12 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
           style={{
             height: 50,
             flexDirection: 'row',
-            backgroundColor,
+            backgroundColor: backgroundColor,
             alignItems: 'center',
+            borderRadius: 10,
+            padding: 10,
           }}>
           {item.icon && <Image source={icons[item.icon]} />}
-
           <Text style={styles.title}>{item.label}</Text>
         </View>
       </TouchableOpacity>
@@ -66,13 +69,16 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
   };
 
   return (
-    <Modal visible={true} transparent animationType="slide">
+    <Modal
+      isVisible={isModalOpen}
+      animationIn="slideInUp"
+      animationOut="slideOutDown"
+      style={{margin: 0}}>
       <TouchableOpacity
         activeOpacity={1}
         onPress={onDismiss}
         style={{
           flex: 1,
-          backgroundColor: 'rgba(0, 0, 0, 0.4)', // Dim the background
         }}>
         <View style={styles.modal}>
           <View style={styles.modalInner}>
@@ -118,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 22,
     borderTopRightRadius: 22,
-    paddingHorizontal: 30,
+    paddingHorizontal: 22,
     paddingTop: 50,
     paddingBottom: 30,
     width: '100%',
@@ -127,6 +133,7 @@ const styles = StyleSheet.create({
   topView: {
     height: 50,
     marginVertical: 15,
+    alignItems: 'center',
   },
   title: {
     fontSize: 16,

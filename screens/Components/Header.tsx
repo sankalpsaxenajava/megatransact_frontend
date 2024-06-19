@@ -5,14 +5,15 @@ import {useNavigation} from '@react-navigation/native';
 // Define the HeaderComponent with a centered title
 interface HeaderProps {
   title: string; // Ensure this is a string
+  haveBorder?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({title}) => {
+const Header: React.FC<HeaderProps> = ({title, haveBorder = true}) => {
   const navigation = useNavigation();
 
   // Safely render the title within <Text>
   return (
-    <View style={[styles.header, {borderBottomWidth: title ? 1 : 0}]}>
+    <View style={[styles.header, {borderBottomWidth: haveBorder ? 1 : 0}]}>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         style={styles.backButton}>

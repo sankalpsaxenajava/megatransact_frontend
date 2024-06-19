@@ -32,7 +32,7 @@ const BillPaymentOptionScreen: React.FC = ({navigation, route}) => {
   ];
   return (
     <View style={styles.container}>
-      <Header title="" />
+      <Header title=" " haveBorder={false} />
       <Text style={styles.heading}>Bill Payment</Text>
       <FlatList
         data={listData}

@@ -4,6 +4,7 @@ import {Image, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {BalanceComponent} from '../../components/BalanceComponent';
+import BackNavigationHeader from '../../components/BackNavigationHeader';
 
 type ReviewPaymentRouteProps = RouteProp<RootStackParamList, 'ReviewPayment'>;
 type ReviewPaymentNavigationProps = NativeStackNavigationProp<
@@ -39,19 +40,12 @@ const ReviewPaymentScreen: React.FC<ReviewPaymentProps> = ({route}) => {
   return (
     <View className="mx-4 flex-col justify-between h-full">
       <View>
-        <View className="flex-row items-center mt-16 mb-10 justify-center w-full">
-          <View className="left-0 absolute">
-            <TouchableOpacity
-              className="bg-white rounded-full w-10 h-10 items-center justify-center"
-              onPress={() => navigation.navigate('PayWithCard')}>
-              <Image
-                source={require('../../assets/icons/back_icon.png')}
-                className="w-6 h-6"
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>Review Payment</Text>
-        </View>
+        <BackNavigationHeader
+          onBackHandler={() => navigation.navigate('PayWithCard')}
+          label="Review Payment"
+          buttonClassName="bg-white items-center flex"
+          headerClassName="flex items-center py-3"
+        />
         <View className="flex-col items-center w-full h-[64%] bg-white rounded-xl">
           <BalanceComponent
             desc="Amount to send"

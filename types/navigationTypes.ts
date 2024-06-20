@@ -16,4 +16,7 @@ export type RootStackParamList = {
   PaymentConfirmation: {
     data: PayWithCardForm;
   };
+  PaymentReceipt: {
+    data: PayWithCardForm;
+  };
 };

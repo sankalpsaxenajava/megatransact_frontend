@@ -1,4 +1,4 @@
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../types/navigationTypes';
 import {Image, Text, View} from 'react-native';
@@ -20,6 +20,7 @@ const PaymentConfirmationScreen: React.FC<PaymentConfirmationProps> = ({
   route,
 }) => {
   const {data} = route.params; // pass to receipt screen
+  const navigation = useNavigation<PaymentConfirmationNavigationProps>();
   return (
     <View className="h-full flex justify-between">
       <View className="flex items-center justify-center gap-6 h-[70%]">
@@ -29,7 +30,9 @@ const PaymentConfirmationScreen: React.FC<PaymentConfirmationProps> = ({
         <Text className="text-2xl">Money Sent to Cashier</Text>
       </View>
       <View className="mx-8 gap-y-7 mb-10">
-        <TouchableOpacity className="flex items-center">
+        <TouchableOpacity
+          className="flex items-center"
+          onPress={() => navigation.navigate('PaymentReceipt', {data: data})}>
           <Text className="text-[#6200EA]">Generate receipt</Text>
         </TouchableOpacity>
         <TouchableOpacity className="bg-[#6200EA] p-4 rounded-full flex items-center">

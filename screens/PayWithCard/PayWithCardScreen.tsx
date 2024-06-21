@@ -80,7 +80,11 @@ const HeaderComponent = ({colorIndex}: {colorIndex: number}) => {
           </TouchableOpacity>
         </View>
         <View className="justify-between flex-row py-6">
-          <BalanceComponent desc="Hello Jospin" balance={6200.89} />
+          <BalanceComponent
+            desc="Hello Jospin"
+            balance={6200.89}
+            varient="uneven"
+          />
           <View className="flex-col items-center gap-1">
             <TouchableOpacity className="bg-white rounded-full w-12 h-12 justify-center items-center">
               <Image source={require('../../assets/icons/purple_card.png')} />
@@ -126,7 +130,11 @@ const CardScrollViewComponent = ({
               resizeMode="contain"
               className="h-full w-full">
               <View className="p-10 justify-between flex-col h-full">
-                <BalanceComponent desc="Total Balance" balance={item.balance} />
+                <BalanceComponent
+                  desc="Total Balance"
+                  balance={item.balance}
+                  varient="uneven"
+                />
                 <Text className="text-white text-[26px] w-full text-center">
                   **** ***** ***** ***** {item.four_digits}
                 </Text>

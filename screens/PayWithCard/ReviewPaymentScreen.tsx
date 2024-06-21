@@ -51,8 +51,9 @@ const ReviewPaymentScreen: React.FC<ReviewPaymentProps> = ({route}) => {
             desc="Amount to send"
             balance={Number(data.amount)}
             textColor="text-black"
-            customClassName="flex-col items-center py-5"
-            titleSize={12}
+            componentClassName="flex-col items-center py-5"
+            titleClassName="text-sm"
+            varient="uneven"
           />
           <View className="flex-col items-start w-full px-4 divide-y divide-[#D9D9D9]">
             {dataUnpackedList.map(item => (

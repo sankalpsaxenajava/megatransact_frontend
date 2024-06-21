@@ -44,9 +44,9 @@ const ReviewPaymentScreen: React.FC<ReviewPaymentProps> = ({route}) => {
           onBackHandler={() => navigation.navigate('PayWithCard')}
           label="Review Payment"
           buttonClassName="bg-white items-center flex"
-          headerClassName="flex items-center py-3"
+          headerClassName="flex items-center py-3 mb-6"
         />
-        <View className="flex-col items-center w-full h-[64%] bg-white rounded-xl">
+        <View className="flex-col items-center w-full h-[65%] bg-white rounded-xl">
           <BalanceComponent
             desc="Amount to send"
             balance={Number(data.amount)}

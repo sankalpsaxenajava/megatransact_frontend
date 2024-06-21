@@ -71,8 +71,8 @@ export const currencyList = [
 ];
 
 export const bankList = [
-  {id: 1, label: 'Heartland'},
-  {id: 2, label: 'Westpac'},
+  {id: 1, label: 'Heartland Bank'},
+  {id: 2, label: 'Westpac Bank'},
 ];
 
 export const cards = [

@@ -21,7 +21,6 @@ const BackNavigationHeader = ({
       flexDirection: 'row',
       justifyContent: 'center',
       marginTop: 50,
-      marginBottom: enableMegaTransactTitle ? 0 : 50,
     },
     backButton: {
       width: 40,

@@ -23,6 +23,8 @@ import PaymentConfirmationScreen from './screens/PayWithCard/PaymentConfirmation
 import PaymentReceiptScreen from './screens/PayWithCard/PaymentReceiptScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const PaymentStack = createNativeStackNavigator();
+const PayWithCardStack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
@@ -70,23 +72,8 @@ function App() {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="PayWithCard"
-            component={PayWithCardScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="ReviewPayment"
-            component={ReviewPaymentScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="PaymentConfirmation"
-            component={PaymentConfirmationScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="PaymentReceipt"
-            component={PaymentReceiptScreen}
+            name="PayWithCardStack"
+            component={PayWithCardScreens}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
@@ -94,8 +81,6 @@ function App() {
     </GestureHandlerRootView>
   );
 }
-
-const PaymentStack = createNativeStackNavigator();
 
 function PaymentScreens() {
   return (
@@ -131,6 +116,33 @@ function PaymentScreens() {
         options={{headerShown: false}}
       />
     </PaymentStack.Navigator>
+  );
+}
+
+function PayWithCardScreens() {
+  return (
+    <PayWithCardStack.Navigator>
+      <PayWithCardStack.Screen
+        name="PayWithCard"
+        component={PayWithCardScreen}
+        options={{headerShown: false}}
+      />
+      <PayWithCardStack.Screen
+        name="ReviewPayment"
+        component={ReviewPaymentScreen}
+        options={{headerShown: false}}
+      />
+      <PayWithCardStack.Screen
+        name="PaymentConfirmation"
+        component={PaymentConfirmationScreen}
+        options={{headerShown: false}}
+      />
+      <PayWithCardStack.Screen
+        name="PaymentReceipt"
+        component={PaymentReceiptScreen}
+        options={{headerShown: false}}
+      />
+    </PayWithCardStack.Navigator>
   );
 }
 

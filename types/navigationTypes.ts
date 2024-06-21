@@ -9,6 +9,7 @@ export type RootStackParamList = {
   SignUp: undefined;
   VerifyEmail: undefined;
   PaymentsStack: undefined;
+  PayWithCardStack: undefined;
   PayWithCard: undefined;
   ReviewPayment: {
     data: PayWithCardForm;

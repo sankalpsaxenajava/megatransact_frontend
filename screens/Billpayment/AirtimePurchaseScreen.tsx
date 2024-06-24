@@ -35,17 +35,10 @@ const networkList = [
   {id: 3, label: '2Degrees'},
 ];
 
-const dataPlanList = [
-  {id: 1, label: '10GB - 30 Days'},
-  {id: 2, label: '20GB - 30 Days'},
-  {id: 3, label: '40GB - 30 Days'},
-];
-
-const MobileDataScreen = ({navigation}) => {
+const AirtimePurchaseScreen = ({navigation}) => {
   const [country, setCountry] = useState('');
   const [network, setNetwork] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [dataPlan, setDataPlan] = useState('');
   const [amount, setAmount] = useState('');
 
   return (
@@ -56,7 +49,7 @@ const MobileDataScreen = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <Text style={{color: '#121212', fontSize: 20, fontWeight: 'semibold'}}>
-          Buy Mobile Data
+          Buy Airtime
         </Text>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.inputContainer}>
@@ -75,14 +68,6 @@ const MobileDataScreen = ({navigation}) => {
               value={network}
               type="Network"
               onChangeValue={setNetwork}
-            />
-            <DropDownInput
-              label="Data Plan"
-              placeholder="Select Data Plan"
-              options={dataPlanList}
-              value={dataPlan}
-              type="Data Plan"
-              onChangeValue={setDataPlan}
             />
             <View>
               <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
@@ -122,7 +107,6 @@ const MobileDataScreen = ({navigation}) => {
               transactionDetail: [
                 {key: 'Amount', value: parseFloat(amount)},
                 {key: 'Phone Number', value: phoneNumber},
-                {key: 'Plan', value: dataPlan},
                 {key: 'Network', value: network},
               ],
             });
@@ -173,4 +157,4 @@ const styles = StyleSheet.create({
     fontFamily: 'Manrope-Regular',
   },
 });
-export default MobileDataScreen;
+export default AirtimePurchaseScreen;

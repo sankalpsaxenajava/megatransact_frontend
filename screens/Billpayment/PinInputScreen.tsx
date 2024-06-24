@@ -56,7 +56,7 @@ const PinInput: React.FC<PinInputProps> = () => {
 
   return (
     <View style={styles.outerContainer}>
-      <Header title={''} />
+      <Header title=" " haveBorder={false} />
       <SafeAreaView style={styles.safeArea}>
         <TouchableOpacity
           style={{flex: 1}}

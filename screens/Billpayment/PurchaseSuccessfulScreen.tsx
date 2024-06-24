@@ -10,7 +10,6 @@ import {
   Image,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Header from '../Components/Header';
 
 type PurchaseSuccessfulProps = {};
 
@@ -19,8 +18,6 @@ const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = ({
 }) => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Header title={null} />
-
       <View style={styles.main}>
         <Image
           source={require('../../assets/icons/purchase-success.png')}

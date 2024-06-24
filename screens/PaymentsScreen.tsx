@@ -9,6 +9,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       description: 'Top up your airtime easily',
       onPress: () => {
         console.log('nav to airtime screen');
+        navigation.navigate('PaymentOption', {category: 'AirtimePurchase'});
       },
     },
     {
@@ -17,7 +18,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       description: 'Select a data plan that fits you',
       onPress: () => {
         console.log('nav to mobile data screen');
-        navigation.navigate('MobileData');
+        navigation.navigate('PaymentOption', {category: 'MobileData'});
       },
     },
     {
@@ -31,7 +32,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
     },
   ];
   return (
-    <View>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <Text style={styles.heading}>Bill Payment</Text>
       <FlatList
         data={listData}

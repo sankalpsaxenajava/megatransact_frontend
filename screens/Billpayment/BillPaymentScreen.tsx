@@ -30,7 +30,7 @@ const BillPaymentScreen: React.FC = () => {
 
   return (
     <View style={{flex: 1}}>
-      <Header title="" />
+      <Header title=" " haveBorder={false} />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>

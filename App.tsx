@@ -21,6 +21,8 @@ import PayWithCardScreen from './screens/PayWithCard/PayWithCardScreen';
 import ReviewPaymentScreen from './screens/PayWithCard/ReviewPaymentScreen';
 import PaymentConfirmationScreen from './screens/PayWithCard/PaymentConfirmationScreen';
 import PaymentReceiptScreen from './screens/PayWithCard/PaymentReceiptScreen';
+import AirtimePurchaseScreen from './screens/Billpayment/AirtimePurchaseScreen';
+import BillPaymentOptionScreen from './screens/Billpayment/BillPaymentOptionScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const PaymentStack = createNativeStackNavigator();
@@ -91,8 +93,18 @@ function PaymentScreens() {
         options={{headerShown: false}}
       />
       <PaymentStack.Screen
+        name="PaymentOption"
+        component={BillPaymentOptionScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
         name="MobileData"
         component={MobileDataScreen}
+        options={{headerShown: false}}
+      />
+      <PaymentStack.Screen
+        name="AirtimePurchase"
+        component={AirtimePurchaseScreen}
         options={{headerShown: false}}
       />
       <PaymentStack.Screen

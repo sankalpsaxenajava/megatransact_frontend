@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,14 +9,36 @@ import {
 } from 'react-native';
 import Header from '../Components/Header';
 import DropDownInput from '../Components/DropDownInput';
-import {countryList, dataPlanList, networkList} from '../../types/mockData';
-import {InputField} from '../../components/InputField';
+import InputField from '../Components/InputField';
 
-const MobileDataScreen = ({navigation}) => {
+const countryList = [
+  {
+    id: 1,
+    label: 'New Zealand',
+    icon: 'nzIcon',
+  },
+  {
+    id: 2,
+    label: 'Africa',
+    icon: 'africaIcon',
+  },
+  {
+    id: 3,
+    label: 'USA',
+    icon: 'usIcon',
+  },
+];
+
+const networkList = [
+  {id: 1, label: 'Vodaphone'},
+  {id: 2, label: 'Spark'},
+  {id: 3, label: '2Degrees'},
+];
+
+const AirtimePurchaseScreen = ({navigation}) => {
   const [country, setCountry] = useState('');
   const [network, setNetwork] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [dataPlan, setDataPlan] = useState('');
   const [amount, setAmount] = useState('');
 
   return (
@@ -28,7 +49,7 @@ const MobileDataScreen = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <Text style={{color: '#121212', fontSize: 20, fontWeight: 'semibold'}}>
-          Buy Mobile Data
+          Buy Airtime
         </Text>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.inputContainer}>
@@ -47,14 +68,6 @@ const MobileDataScreen = ({navigation}) => {
               value={network}
               type="Network"
               onChangeValue={setNetwork}
-            />
-            <DropDownInput
-              label="Data Plan"
-              placeholder="Select Data Plan"
-              options={dataPlanList}
-              value={dataPlan}
-              type="Data Plan"
-              onChangeValue={setDataPlan}
             />
             <View>
               <Text style={{padding: 10, color: '#000000', fontSize: 14}}>
@@ -94,7 +107,6 @@ const MobileDataScreen = ({navigation}) => {
               transactionDetail: [
                 {key: 'Amount', value: parseFloat(amount)},
                 {key: 'Phone Number', value: phoneNumber},
-                {key: 'Plan', value: dataPlan},
                 {key: 'Network', value: network},
               ],
             });
@@ -145,4 +157,4 @@ const styles = StyleSheet.create({
     fontFamily: 'Manrope-Regular',
   },
 });
-export default MobileDataScreen;
+export default AirtimePurchaseScreen;

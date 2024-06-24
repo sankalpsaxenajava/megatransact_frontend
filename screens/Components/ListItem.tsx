@@ -10,8 +10,8 @@ interface ListItemProp {
 const ListItem = ({icon, mainText, description, onPress}: ListItemProp) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <View style={styles.iconContainer}>
-        <Image style={styles.icon} source={icons[icon]} />
+      <View style={styles.imgContainer}>
+        <Image style={styles.img} source={icons[icon]} />
       </View>
 
       <View style={styles.textContainer}>
@@ -40,9 +40,28 @@ const styles = StyleSheet.create({
     gap: 16,
     marginVertical: 10,
     marginHorizontal: 25,
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    // Add Android elevation
+    elevation: 5,
+  },
+  imgContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 2,
+    width: 54,
+    height: 54,
+  },
+  img: {
+    resizeMode: 'contain',
+    width: '100%',
+    height: '100%',
   },
   textContainer: {
-    flex: 4,
+    flex: 5,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
@@ -57,11 +76,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    width: 64,
-    height: 64,
+    width: 20,
+    height: 20,
   },
-  icon: {
+  logo: {
     resizeMode: 'contain',
+    width: '100%',
+    height: '100%',
   },
 });
 

@@ -25,6 +25,7 @@ import AirtimePurchaseScreen from './screens/Billpayment/AirtimePurchaseScreen';
 import BillPaymentOptionScreen from './screens/Billpayment/BillPaymentOptionScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const AuthStack = createNativeStackNavigator();
 const PaymentStack = createNativeStackNavigator();
 const PayWithCardStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -44,28 +45,8 @@ function App() {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="AccountType"
-            component={AccountTypeScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SetupPin"
-            component={SetupPinScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={SignUpScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="VerifyEmail"
-            component={VerifyEmailScreen}
+            name="AuthStack"
+            component={AuthScreens}
             options={{headerShown: false}}
           />
           <Stack.Screen
@@ -81,6 +62,38 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
+  );
+}
+
+function AuthScreens() {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen
+        name="AccountType"
+        component={AccountTypeScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="SetupPin"
+        component={SetupPinScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="VerifyEmail"
+        component={VerifyEmailScreen}
+        options={{headerShown: false}}
+      />
+    </AuthStack.Navigator>
   );
 }
 

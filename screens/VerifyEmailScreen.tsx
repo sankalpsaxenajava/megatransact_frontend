@@ -14,7 +14,10 @@ const VerifyEmailScreen: React.FC = ({navigation}) => {
         We’ve sent an email to jospin@megatransact.com{'\n'}
         click on the link to verify your email.
       </Text>
-      <Button onPress={NavigationContainer.navigate()} />
+      <Button
+        title="Go to payment (temporary)"
+        onPress={navigation.navigate('PaymentsStack', {screen: 'Payments'})}
+      />
     </CustomScrollView>
   );
 };

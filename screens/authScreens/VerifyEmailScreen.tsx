@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text, Image, StyleSheet} from 'react-native';
-import CustomScrollView from '../components/CustomScrollView';
+import {Text, Image, StyleSheet, Button} from 'react-native';
+import CustomScrollView from '../../components/CustomScrollView';
 
-const VerifyEmailScreen: React.FC = () => {
+const VerifyEmailScreen: React.FC = ({navigation}) => {
   return (
     <CustomScrollView>
       <Image
-        source={require('../assets/images/image9.png')}
+        source={require('../../assets/images/image9.png')}
         style={styles.emailIcon}
       />
       <Text style={styles.title}>Verify your email</Text>
@@ -14,6 +14,10 @@ const VerifyEmailScreen: React.FC = () => {
         We’ve sent an email to jospin@megatransact.com{'\n'}
         click on the link to verify your email.
       </Text>
+      <Button
+        title="go to home page (temporary)"
+        onPress={() => navigation.navigate('Home')}
+      />
     </CustomScrollView>
   );
 };

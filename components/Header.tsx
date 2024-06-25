@@ -6,19 +6,34 @@ import {useNavigation} from '@react-navigation/native';
 interface HeaderProps {
   title: string; // Ensure this is a string
   haveBorder?: boolean;
+  navHandler?: () => void;
+  variant?: 'white' | 'transparent';
 }
 
-const Header: React.FC<HeaderProps> = ({title, haveBorder = true}) => {
+const Header: React.FC<HeaderProps> = ({
+  title,
+  haveBorder = true,
+  navHandler,
+  variant = 'white',
+}) => {
   const navigation = useNavigation();
-
+  const headerStyle = variant === 'white' && styles.whiteHeader;
+  const iconStyle = variant === 'transparent' && styles.backIconBg;
   // Safely render the title within <Text>
   return (
-    <View style={[styles.header, {borderBottomWidth: haveBorder ? 1 : 0}]}>
+    <View
+      style={[
+        styles.header,
+        headerStyle,
+        {borderBottomWidth: haveBorder ? 1 : 0},
+      ]}>
       <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={styles.backButton}>
+        onPress={() => {
+          navHandler ? navHandler() : navigation.goBack();
+        }}
+        style={[styles.backButton, iconStyle]}>
         <Image
-          source={require('../../assets/icons/back_icon.png')} // Ensure this path is correct
+          source={require('./../assets/icons/back_icon.png')} // Ensure this path is correct
           style={styles.backIcon}
         />
       </TouchableOpacity>
@@ -36,9 +51,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center', // This centers the title
     padding: 20,
-    backgroundColor: 'white',
     borderBottomColor: '#ccc',
     position: 'relative', // To allow absolute positioning of the back button
+  },
+  whiteHeader: {
+    backgroundColor: 'white',
   },
   backButton: {
     position: 'absolute', // Position absolutely for fixed placement
@@ -47,14 +64,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
   },
   backIcon: {
     resizeMode: 'contain',
     width: 20,
     height: 20,
     tintColor: '#333', // Optional tint for consistent color
+  },
+  backIconBg: {
+    borderRadius: 20,
+    backgroundColor: 'white',
+    borderColor: 'tarnsparent',
+    padding: 5,
   },
   headerText: {
     fontSize: 20,

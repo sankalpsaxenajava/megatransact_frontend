@@ -4,7 +4,7 @@ import {Image, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {BalanceComponent} from '../../components/BalanceComponent';
-import BackNavigationHeader from '../../components/BackNavigationHeader';
+import Header from '../../components/Header';
 
 type ReviewPaymentRouteProps = RouteProp<RootStackParamList, 'ReviewPayment'>;
 type ReviewPaymentNavigationProps = NativeStackNavigationProp<
@@ -40,11 +40,11 @@ const ReviewPaymentScreen: React.FC<ReviewPaymentProps> = ({route}) => {
   return (
     <View className="mx-4 flex-col justify-between h-full">
       <View>
-        <BackNavigationHeader
-          onBackHandler={() => navigation.navigate('PayWithCard')}
-          label="Review Payment"
-          buttonClassName="bg-white items-center flex"
-          headerClassName="flex items-center py-3 mb-6"
+        <Header
+          title="Review Payment"
+          haveBorder={false}
+          variant="transparent"
+          navHandler={() => navigation.navigate('PayWithCard')}
         />
         <View className="flex-col items-center w-full h-[65%] bg-white rounded-xl">
           <BalanceComponent

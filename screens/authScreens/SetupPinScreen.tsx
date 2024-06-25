@@ -1,8 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
-import BackNavigationHeader from '../components/BackNavigationHeader';
-import CustomScrollView from '../components/CustomScrollView';
-import {colors} from '../types/colors';
+import CustomScrollView from '../../components/CustomScrollView';
+import {colors} from '../../types/colors';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import Header from '../../components/Header';
 
 const SetupPinScreen = () => {
   function onBackHandler() {
@@ -11,10 +11,7 @@ const SetupPinScreen = () => {
   return (
     <CustomScrollView>
       <View style={styles.container}>
-        <BackNavigationHeader
-          onBackHandler={onBackHandler}
-          headerClassName="mb-12"
-        />
+        <Header navHandler={onBackHandler} title="" haveBorder={false} />
         <View style={{gap: 15, marginBottom: 30}}>
           <Text style={{fontSize: 20, fontWeight: 500}}>Set up your PIN</Text>
           <Text

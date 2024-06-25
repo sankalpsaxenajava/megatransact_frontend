@@ -1,5 +1,6 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import ListItem from './Components/ListItem';
+import ListItem from '../../components/ListItem';
+import Header from '../../components/Header';
 
 const PaymentsScreen: React.FC = ({navigation}) => {
   const listData = [
@@ -33,6 +34,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
   ];
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
+      <Header title="" haveBorder={false} />
       <Text style={styles.heading}>Bill Payment</Text>
       <FlatList
         data={listData}

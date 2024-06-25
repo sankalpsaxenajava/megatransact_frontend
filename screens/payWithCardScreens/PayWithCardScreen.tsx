@@ -6,7 +6,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {LinearGradient} from 'react-native-linear-gradient';
 import {interpolateColor} from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
-import DropDownInput from '../Components/DropDownInput';
+import DropDownInput from '../../components/DropDownInput';
 import {bankList, cards, currencyList} from '../../types/mockData';
 import {Controller, useForm} from 'react-hook-form';
 import {InputField} from '../../components/InputField';

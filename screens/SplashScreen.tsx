@@ -20,10 +20,10 @@ type SplashNavigationProps = NativeStackNavigationProp<
 const SplashScreen = () => {
   const navigation = useNavigation<SplashNavigationProps>();
   function onRegisterHandler() {
-    navigation.navigate('AccountType');
+    navigation.navigate('AuthStack', {screen: 'AccountType'});
   }
   function onLoginHandler() {
-    navigation.navigate('Login');
+    navigation.navigate('AuthStack', {screen: 'Login'});
   }
 
   return (

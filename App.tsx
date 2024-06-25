@@ -2,29 +2,32 @@
 import React from 'react';
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SignUpScreen from './screens/SignUpScreen';
-import VerifyEmailScreen from './screens/VerifyEmailScreen';
+
 import {RootStackParamList} from './types/navigationTypes';
 import SplashScreen from './screens/SplashScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import SetupPinScreen from './screens/SetupPinScreen';
-import LoginScreen from './screens/LoginScreen';
-import AccountTypeScreen from './screens/AccountTypeScreen';
+import SetupPinScreen from './screens/authScreens/SetupPinScreen';
+import LoginScreen from './screens/authScreens/LoginScreen';
 import AppLoadScreen from './screens/AppLoadScreen';
-import MobileDataScreen from './screens/Billpayment/MobileDataScreen';
-import BillPaymentScreen from './screens/Billpayment/BillPaymentScreen';
-import TransactionReviewScreen from './screens/Billpayment/TransactionReviewScreen';
-import pinInput from './screens/Billpayment/PinInputScreen';
-import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
-import PaymentsScreen from './screens/PaymentsScreen';
-import PayWithCardScreen from './screens/PayWithCard/PayWithCardScreen';
-import ReviewPaymentScreen from './screens/PayWithCard/ReviewPaymentScreen';
-import PaymentConfirmationScreen from './screens/PayWithCard/PaymentConfirmationScreen';
-import PaymentReceiptScreen from './screens/PayWithCard/PaymentReceiptScreen';
-import AirtimePurchaseScreen from './screens/Billpayment/AirtimePurchaseScreen';
-import BillPaymentOptionScreen from './screens/Billpayment/BillPaymentOptionScreen';
+import MobileDataScreen from './screens/paymentScreens/MobileDataScreen';
+import BillPaymentScreen from './screens/paymentScreens/BillPaymentScreen';
+import TransactionReviewScreen from './screens/paymentScreens/TransactionReviewScreen';
+import pinInput from './screens/paymentScreens/PinInputScreen';
+import PurchaseSuccessful from './screens/paymentScreens/PurchaseSuccessfulScreen';
+import PaymentsScreen from './screens/paymentScreens/PaymentsScreen';
+import PayWithCardScreen from './screens/payWithCardScreens/PayWithCardScreen';
+import ReviewPaymentScreen from './screens/payWithCardScreens/ReviewPaymentScreen';
+import PaymentConfirmationScreen from './screens/payWithCardScreens/PaymentConfirmationScreen';
+import PaymentReceiptScreen from './screens/payWithCardScreens/PaymentReceiptScreen';
+import AirtimePurchaseScreen from './screens/paymentScreens/AirtimePurchaseScreen';
+import BillPaymentOptionScreen from './screens/paymentScreens/BillPaymentOptionScreen';
+import HomeScreen from './screens/HomeScreen';
+import AccountTypeScreen from './screens/authScreens/AccountTypeScreen';
+import SignUpScreen from './screens/authScreens/SignUpScreen';
+import VerifyEmailScreen from './screens/authScreens/VerifyEmailScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const AuthStack = createNativeStackNavigator();
 const PaymentStack = createNativeStackNavigator();
 const PayWithCardStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -44,28 +47,13 @@ function App() {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="AccountType"
-            component={AccountTypeScreen}
+            name="Home"
+            component={HomeScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SetupPin"
-            component={SetupPinScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={SignUpScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="VerifyEmail"
-            component={VerifyEmailScreen}
+            name="AuthStack"
+            component={AuthScreens}
             options={{headerShown: false}}
           />
           <Stack.Screen
@@ -81,6 +69,38 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
+  );
+}
+
+function AuthScreens() {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen
+        name="AccountType"
+        component={AccountTypeScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="SetupPin"
+        component={SetupPinScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="VerifyEmail"
+        component={VerifyEmailScreen}
+        options={{headerShown: false}}
+      />
+    </AuthStack.Navigator>
   );
 }
 

@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Header from '../Components/Header';
-import DropDownInput from '../Components/DropDownInput';
+import Header from '../../components/Header';
+import DropDownInput from '../../components/DropDownInput';
 import {countryList, dataPlanList, networkList} from '../../types/mockData';
 import {InputField} from '../../components/InputField';
 

@@ -2,12 +2,12 @@ import {RouteProp, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../types/navigationTypes';
 import {Image, ImageBackground, Text, View} from 'react-native';
-import BackNavigationHeader from '../../components/BackNavigationHeader';
 import MegaTransactTitle from '../../components/MegaTransactTitle';
 import {BalanceComponent} from '../../components/BalanceComponent';
 import {cn} from '../../utils/cn';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {PayWithCardForm} from './PayWithCardScreen';
+import Header from '../../components/Header';
 
 type PaymentReceiptRouteProps = RouteProp<RootStackParamList, 'PaymentReceipt'>;
 type PaymentReceiptNavigationProps = NativeStackNavigationProp<
@@ -186,13 +186,13 @@ const PaymentReceiptScreen: React.FC<PaymentReceiptProps> = ({route}) => {
   return (
     <View className="mx-4 flex-col justify-between h-full">
       <View>
-        <BackNavigationHeader
-          onBackHandler={() =>
+        <Header
+          title="Receipt"
+          haveBorder={false}
+          variant="transparent"
+          navHandler={() =>
             navigation.navigate('PaymentConfirmation', {data: data})
           }
-          label="Receipt"
-          buttonClassName="bg-white items-center flex"
-          headerClassName="flex items-center py-3 mb-6"
         />
         <View className="bg-white rounded-xl">
           <HeaderComponent balance={Number(data.amount)} />

@@ -1,4 +1,4 @@
-import {PayWithCardForm} from '../screens/PayWithCard/PayWithCardScreen';
+import {PayWithCardForm} from '../screens/payWithCardScreens/PayWithCardScreen';
 
 export type RootStackParamList = {
   AppLoad: undefined;

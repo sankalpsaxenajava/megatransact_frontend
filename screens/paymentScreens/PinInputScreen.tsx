@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
-import Header from '../Components/Header';
+import Header from '../../components/Header';
 
 type PinInputProps = {};
 

@@ -1,5 +1,5 @@
 import {Image, Pressable, View, Text, StyleSheet} from 'react-native';
-import icons from '../../assets/icons';
+import icons from '../assets/icons';
 interface ListItemProp {
   icon: string;
   mainText: string;
@@ -21,7 +21,7 @@ const ListItem = ({icon, mainText, description, onPress}: ListItemProp) => {
       <View style={styles.iconContainer}>
         <Image
           style={styles.logo}
-          source={require('../../assets/icons/chevron-right.png')}
+          source={require('./../assets/icons/chevron-right.png')}
         />
       </View>
     </Pressable>

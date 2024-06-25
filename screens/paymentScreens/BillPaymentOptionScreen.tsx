@@ -1,6 +1,6 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import ListItem from '../Components/ListItem';
-import Header from '../Components/Header';
+import ListItem from '../../components/ListItem';
+import Header from '../../components/Header';
 
 const BillPaymentOptionScreen: React.FC = ({navigation, route}) => {
   const {category} = route.params;

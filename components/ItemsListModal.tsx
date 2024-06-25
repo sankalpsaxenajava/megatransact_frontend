@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-import icons from '../../assets/icons';
+import icons from './../assets/icons';
 import Modal from 'react-native-modal/dist/modal';
 
 // Define the types for the items in the list

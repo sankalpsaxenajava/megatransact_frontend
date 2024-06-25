@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import Header from '../Components/Header';
-import DropDownInput from '../Components/DropDownInput';
+import Header from '../../components/Header';
+import DropDownInput from '../../components/DropDownInput';
 import {countryList, categoryList, billerList} from '../../types/mockData';
 import {InputField} from '../../components/InputField';
 

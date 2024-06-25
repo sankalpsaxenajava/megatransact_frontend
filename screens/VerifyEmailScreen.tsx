@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text, Image, StyleSheet} from 'react-native';
+import {Text, Image, StyleSheet, Button} from 'react-native';
 import CustomScrollView from '../components/CustomScrollView';
 
-const VerifyEmailScreen: React.FC = () => {
+const VerifyEmailScreen: React.FC = ({navigation}) => {
   return (
     <CustomScrollView>
       <Image
@@ -14,6 +14,7 @@ const VerifyEmailScreen: React.FC = () => {
         We’ve sent an email to jospin@megatransact.com{'\n'}
         click on the link to verify your email.
       </Text>
+      <Button onPress={NavigationContainer.navigate()} />
     </CustomScrollView>
   );
 };

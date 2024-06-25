@@ -9,7 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Header from '../Components/Header';
+import Header from '../../components/Header';
 
 // Define the type for a transaction detail item
 interface TransactionDetail {

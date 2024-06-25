@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({title, haveBorder = true}) => {
         onPress={() => navigation.goBack()}
         style={styles.backButton}>
         <Image
-          source={require('../../assets/icons/back_icon.png')} // Ensure this path is correct
+          source={require('./../assets/icons/back_icon.png')} // Ensure this path is correct
           style={styles.backIcon}
         />
       </TouchableOpacity>

@@ -17,21 +17,22 @@ import TransactionReviewScreen from './screens/Billpayment/TransactionReviewScre
 import pinInput from './screens/Billpayment/PinInputScreen';
 import PurchaseSuccessful from './screens/Billpayment/PurchaseSuccessfulScreen';
 import PaymentsScreen from './screens/PaymentsScreen';
+import PayWithCardScreen from './screens/PayWithCard/PayWithCardScreen';
+import ReviewPaymentScreen from './screens/PayWithCard/ReviewPaymentScreen';
+import PaymentConfirmationScreen from './screens/PayWithCard/PaymentConfirmationScreen';
+import PaymentReceiptScreen from './screens/PayWithCard/PaymentReceiptScreen';
 import AirtimePurchaseScreen from './screens/Billpayment/AirtimePurchaseScreen';
 import BillPaymentOptionScreen from './screens/Billpayment/BillPaymentOptionScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const PaymentStack = createNativeStackNavigator();
+const PayWithCardStack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="PaymentsStack"
-            component={PaymentScreens}
-            options={{headerShown: false}}
-          />
           <Stack.Screen
             name="AppLoad"
             component={AppLoadScreen}
@@ -67,13 +68,21 @@ function App() {
             component={VerifyEmailScreen}
             options={{headerShown: false}}
           />
+          <Stack.Screen
+            name="PaymentsStack"
+            component={PaymentScreens}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="PayWithCardStack"
+            component={PayWithCardScreens}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
   );
 }
-
-const PaymentStack = createNativeStackNavigator();
 
 function PaymentScreens() {
   return (
@@ -119,6 +128,33 @@ function PaymentScreens() {
         options={{headerShown: false}}
       />
     </PaymentStack.Navigator>
+  );
+}
+
+function PayWithCardScreens() {
+  return (
+    <PayWithCardStack.Navigator>
+      <PayWithCardStack.Screen
+        name="PayWithCard"
+        component={PayWithCardScreen}
+        options={{headerShown: false}}
+      />
+      <PayWithCardStack.Screen
+        name="ReviewPayment"
+        component={ReviewPaymentScreen}
+        options={{headerShown: false}}
+      />
+      <PayWithCardStack.Screen
+        name="PaymentConfirmation"
+        component={PaymentConfirmationScreen}
+        options={{headerShown: false}}
+      />
+      <PayWithCardStack.Screen
+        name="PaymentReceipt"
+        component={PaymentReceiptScreen}
+        options={{headerShown: false}}
+      />
+    </PayWithCardStack.Navigator>
   );
 }
 

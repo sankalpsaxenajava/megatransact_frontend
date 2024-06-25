@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {
   KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,37 +10,8 @@ import {
 } from 'react-native';
 import Header from '../Components/Header';
 import DropDownInput from '../Components/DropDownInput';
-import InputField from '../Components/InputField';
-
-const countryList = [
-  {
-    id: 1,
-    label: 'New Zealand',
-    icon: 'nzIcon',
-  },
-  {
-    id: 2,
-    label: 'Africa',
-    icon: 'africaIcon',
-  },
-  {
-    id: 3,
-    label: 'USA',
-    icon: 'usIcon',
-  },
-];
-
-const networkList = [
-  {id: 1, label: 'Vodaphone'},
-  {id: 2, label: 'Spark'},
-  {id: 3, label: '2Degrees'},
-];
-
-const dataPlanList = [
-  {id: 1, label: '10GB - 30 Days'},
-  {id: 2, label: '20GB - 30 Days'},
-  {id: 3, label: '40GB - 30 Days'},
-];
+import {countryList, dataPlanList, networkList} from '../../types/mockData';
+import {InputField} from '../../components/InputField';
 
 const MobileDataScreen = ({navigation}) => {
   const [country, setCountry] = useState('');

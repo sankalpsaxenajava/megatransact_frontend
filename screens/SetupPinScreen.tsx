@@ -11,7 +11,10 @@ const SetupPinScreen = () => {
   return (
     <CustomScrollView>
       <View style={styles.container}>
-        <BackNavigationHeader onBackHandler={onBackHandler} />
+        <BackNavigationHeader
+          onBackHandler={onBackHandler}
+          headerClassName="mb-12"
+        />
         <View style={{gap: 15, marginBottom: 30}}>
           <Text style={{fontSize: 20, fontWeight: 500}}>Set up your PIN</Text>
           <Text

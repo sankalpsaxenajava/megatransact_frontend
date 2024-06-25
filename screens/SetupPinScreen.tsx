@@ -1,5 +1,4 @@
 import {StyleSheet, Text, View} from 'react-native';
-import BackNavigationHeader from '../components/BackNavigationHeader';
 import CustomScrollView from '../components/CustomScrollView';
 import {colors} from '../types/colors';
 import OTPInputView from '@twotalltotems/react-native-otp-input';

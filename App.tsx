@@ -23,6 +23,7 @@ import PaymentConfirmationScreen from './screens/PayWithCard/PaymentConfirmation
 import PaymentReceiptScreen from './screens/PayWithCard/PaymentReceiptScreen';
 import AirtimePurchaseScreen from './screens/Billpayment/AirtimePurchaseScreen';
 import BillPaymentOptionScreen from './screens/Billpayment/BillPaymentOptionScreen';
+import HomeScreen from './screens/HomeScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator();
@@ -42,6 +43,11 @@ function App() {
           <Stack.Screen
             name="Splash"
             component={SplashScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen

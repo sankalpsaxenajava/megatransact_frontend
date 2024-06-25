@@ -15,8 +15,8 @@ const VerifyEmailScreen: React.FC = ({navigation}) => {
         click on the link to verify your email.
       </Text>
       <Button
-        title="Go to payment (temporary)"
-        onPress={navigation.navigate('PaymentsStack', {screen: 'Payments'})}
+        title="go to home page (temporary)"
+        onPress={() => navigation.navigate('Home')}
       />
     </CustomScrollView>
   );

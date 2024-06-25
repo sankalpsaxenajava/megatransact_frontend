@@ -2,14 +2,14 @@ import CustomScrollView from '../components/CustomScrollView';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
-import {useNavigation} from '@react-navigation/native';
 import {colors} from '../types/colors';
 import {Controller, useForm} from 'react-hook-form';
 import {InputField} from '../components/InputField';
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useRef} from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
-import BackNavigationHeader from '../components/BackNavigationHeader';
+import Header from '../components/Header';
+import MegaTransactTitle from '../components/MegaTransactTitle';
 
 type LoginNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -22,9 +22,12 @@ type LoginFrom = {
   keepLogin: boolean;
 };
 
-const InputComponent = () => {
+const InputComponent = ({navigation}) => {
   const {control, handleSubmit} = useForm<LoginFrom>();
-  const onSubmit = handleSubmit(({username, password}) => {});
+  const onSubmit = handleSubmit(({username, password}) => {
+    // auth logic here
+    navigation.navigate('Home');
+  });
 
   return (
     <View>
@@ -122,11 +125,7 @@ const BottomSheetComponent = ({
   );
 };
 
-const LoginScreen = () => {
-  const navigation = useNavigation<LoginNavigationProps>();
-  function onBackHandler() {
-    navigation.navigate('Splash');
-  }
+const LoginScreen = ({navigation}) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -142,17 +141,15 @@ const LoginScreen = () => {
   return (
     <CustomScrollView>
       <View style={styles.container}>
-        <BackNavigationHeader
-          enableMegaTransactTitle={true}
-          onBackHandler={onBackHandler}
-        />
+        <Header title="" haveBorder={false} />
+        <MegaTransactTitle iconSize={5.5} textSize={5.5} />
         <View style={styles.subHeader}>
           <Text style={{fontSize: 25}}>Welcome back</Text>
           <Text style={{fontSize: 15, color: colors.lightText}}>
             Login to your account to continue
           </Text>
         </View>
-        <InputComponent />
+        <InputComponent navigation={navigation} />
         <View style={styles.biometricComponent}>
           <TouchableOpacity onPress={() => bottomSheetRef.current?.expand()}>
             <Image source={require('../assets/icons/fingerprint.png')} />

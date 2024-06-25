@@ -1,15 +1,4 @@
 const icons = {
-  userIcon: require('./user.png'),
-  scanIcon: require('./scan.png'),
-  dataIcon: require('./data.png'),
-  nzIcon: require('./new-zealand.png'),
-  africaIcon: require('./south-africa.png'),
-  usIcon: require('./united-states.png'),
-  mpesaIcon: require('./mpesa.png'),
-  logo: require('./../logos/MegaTransactLogo.png'),
-};
-
-const interfaceIcons = {
   arrowDownIcon: require('./arrow_down.png'),
   arrowLeftIcon: require('./arrow_left.png'),
   arrowLeftWhiteIcon: require('./arrow_left_white.png'),
@@ -28,12 +17,9 @@ const interfaceIcons = {
   scanWhiteIcon: require('./scan_white.png'),
   shareIcon: require('./share.png'),
   downloadIcon: require('./download.png'),
-};
-
-const countryIcons = {
   nzIcon: require('./nz.png'),
-  africaIcon: require('./south-africa.png'),
+  africaIcon: require('./south_africa.png'),
   usIcon: require('./usa.png'),
 };
 
-export {interfaceIcons, countryIcons};
+export default icons;

@@ -8,6 +8,7 @@ import {cn} from '../../utils/cn';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {PayWithCardForm} from './PayWithCardScreen';
 import Header from '../../components/Header';
+import icons from '../../assets/icons';
 
 type PaymentReceiptRouteProps = RouteProp<RootStackParamList, 'PaymentReceipt'>;
 type PaymentReceiptNavigationProps = NativeStackNavigationProp<
@@ -165,13 +166,13 @@ const SaveOptionsComponent = () => {
     <View className="flex-row justify-center mb-8 space-x-4 w-full">
       <View className="w-[48%]">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2 bg-white rounded-lg py-4">
-          <Image source={require('../../assets/icons/upload.png')} />
+          <Image source={icons.downloadIcon} />
           <Text>Download</Text>
         </TouchableOpacity>
       </View>
       <View className="w-[48%]">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2 bg-[#6200EA] rounded-lg py-4">
-          <Image source={require('../../assets/icons/share.png')} />
+          <Image source={icons.shareIcon} />
           <Text className="text-white">Share</Text>
         </TouchableOpacity>
       </View>

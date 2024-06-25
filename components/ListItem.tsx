@@ -19,10 +19,7 @@ const ListItem = ({icon, mainText, description, onPress}: ListItemProp) => {
         <Text>{description}</Text>
       </View>
       <View style={styles.iconContainer}>
-        <Image
-          style={styles.logo}
-          source={require('./../assets/icons/chevron-right.png')}
-        />
+        <Image style={styles.logo} source={icons.arrowRightIcon} />
       </View>
     </Pressable>
   );

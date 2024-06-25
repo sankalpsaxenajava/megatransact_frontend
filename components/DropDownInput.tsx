@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import ItemsListModal, {ListItem} from './ItemsListModal';
 import {InputField} from './InputField';
+import icons from '../assets/icons';
 
 interface DropDownInputProps {
   label: string;
@@ -41,7 +42,7 @@ const DropDownInput: React.FC<DropDownInputProps> = ({
           setOpenModal(true);
         }}>
         <InputField
-          iconName={require('./../assets/icons/arrow_icon.png')}
+          iconName={icons.arrowDownIcon}
           placeholder={placeholder}
           secureTextEntry={false}
           value={value}

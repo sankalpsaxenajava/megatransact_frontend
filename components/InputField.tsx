@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   TextInput,
@@ -48,11 +48,7 @@ export const InputField: React.FC<InputFieldProps> = ({
       {varient == 'password' && (
         <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
           <Image
-            source={
-              isHidden
-                ? require('../assets/icons/eye_off.png')
-                : require('../assets/icons/eye_on.png')
-            }
+            source={isHidden ? icons.eyeOffIcon : icons.eyeOnIcon}
             style={styles.inputIcon}
           />
         </TouchableOpacity>

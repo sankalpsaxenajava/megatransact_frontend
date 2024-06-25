@@ -6,16 +6,23 @@ import {useNavigation} from '@react-navigation/native';
 interface HeaderProps {
   title: string; // Ensure this is a string
   haveBorder?: boolean;
+  navHandler?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({title, haveBorder = true}) => {
+const Header: React.FC<HeaderProps> = ({
+  title,
+  haveBorder = true,
+  navHandler,
+}) => {
   const navigation = useNavigation();
 
   // Safely render the title within <Text>
   return (
     <View style={[styles.header, {borderBottomWidth: haveBorder ? 1 : 0}]}>
       <TouchableOpacity
-        onPress={() => navigation.goBack()}
+        onPress={() => {
+          navHandler ? navHandler() : navigation.goBack();
+        }}
         style={styles.backButton}>
         <Image
           source={require('./../assets/icons/back_icon.png')} // Ensure this path is correct

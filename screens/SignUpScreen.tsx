@@ -13,7 +13,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
 import CustomScrollView from '../components/CustomScrollView';
 import {InputField} from '../components/InputField';
-import BackNavigationHeader from '../components/BackNavigationHeader';
+import Header from '../components/Header';
+import MegaTransactTitle from '../components/MegaTransactTitle';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -96,9 +97,6 @@ const SignUpScreen: React.FC = () => {
       );
     }
   };
-  function onBackHandler() {
-    navigation.navigate('AccountType');
-  }
 
   return (
     <KeyboardAvoidingView
@@ -106,10 +104,8 @@ const SignUpScreen: React.FC = () => {
       style={styles.container}>
       <CustomScrollView>
         <View style={{width: '100%'}}>
-          <BackNavigationHeader
-            enableMegaTransactTitle={true}
-            onBackHandler={onBackHandler}
-          />
+          <Header title="" haveBorder={false} />
+          <MegaTransactTitle iconSize={5.5} textSize={5.5} />
           <Text style={styles.signupText}>Sign up</Text>
           <Text style={styles.smallText}>Register to own an account.</Text>
 

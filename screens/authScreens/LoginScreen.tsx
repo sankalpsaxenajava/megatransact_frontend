@@ -1,15 +1,15 @@
-import CustomScrollView from '../components/CustomScrollView';
+import CustomScrollView from '../../components/CustomScrollView';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../types/navigationTypes';
-import {colors} from '../types/colors';
+import {RootStackParamList} from '../../types/navigationTypes';
+import {colors} from '../../types/colors';
 import {Controller, useForm} from 'react-hook-form';
-import {InputField} from '../components/InputField';
+import {InputField} from '../../components/InputField';
 import {useCallback, useRef} from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
-import Header from '../components/Header';
-import MegaTransactTitle from '../components/MegaTransactTitle';
+import Header from '../../components/Header';
+import MegaTransactTitle from '../../components/MegaTransactTitle';
 
 type LoginNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -37,7 +37,7 @@ const InputComponent = ({navigation}) => {
           name="username"
           render={({field: {onChange, value}, fieldState: {error}}) => (
             <InputField
-              iconName={require('../assets/icons/email.png')}
+              iconName={require('../../assets/icons/email.png')}
               placeholder="Username"
               secureTextEntry={false}
               value={value}
@@ -102,13 +102,13 @@ const BottomSheetComponent = ({
         <TouchableOpacity
           onPress={() => bottomSheetRef.current?.close()}
           style={styles.sheetCloseButton}>
-          <Image source={require('../assets/icons/cross.png')} />
+          <Image source={require('../../assets/icons/cross.png')} />
         </TouchableOpacity>
       </View>
       <View style={{gap: 20, alignItems: 'center'}}>
         <TouchableOpacity style={styles.sheetFingerprint}>
           <Image
-            source={require('../assets/icons/fingerprint.png')}
+            source={require('../../assets/icons/fingerprint.png')}
             style={{width: 150, height: 150}}
           />
         </TouchableOpacity>
@@ -152,7 +152,7 @@ const LoginScreen = ({navigation}) => {
         <InputComponent navigation={navigation} />
         <View style={styles.biometricComponent}>
           <TouchableOpacity onPress={() => bottomSheetRef.current?.expand()}>
-            <Image source={require('../assets/icons/fingerprint.png')} />
+            <Image source={require('../../assets/icons/fingerprint.png')} />
           </TouchableOpacity>
           <Text>Touch to login with biometric</Text>
         </View>

@@ -1,9 +1,9 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import CustomScrollView from '../components/CustomScrollView';
-import {colors} from '../types/colors';
+import CustomScrollView from '../../components/CustomScrollView';
+import {colors} from '../../types/colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../types/navigationTypes';
+import {RootStackParamList} from '../../types/navigationTypes';
 
 type PersonalNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -20,7 +20,7 @@ const OptionListComponent = () => {
     <View style={styles.optionList}>
       <TouchableOpacity style={styles.option} onPress={onPressPersonal}>
         <View style={styles.iconBackground}>
-          <Image source={require('../assets/icons/avatar.png')} />
+          <Image source={require('../../assets/icons/avatar.png')} />
         </View>
         <View style={styles.textWrapper}>
           <Text style={[styles.text, styles.subtitle]}>Personal account</Text>
@@ -31,7 +31,7 @@ const OptionListComponent = () => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.option}>
         <View style={styles.iconBackground}>
-          <Image source={require('../assets/icons/bag.png')} />
+          <Image source={require('../../assets/icons/bag.png')} />
         </View>
         <View style={styles.textWrapper}>
           <Text style={[styles.text, styles.subtitle]}>Business account</Text>

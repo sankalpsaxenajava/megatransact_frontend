@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, Image, StyleSheet, Button} from 'react-native';
-import CustomScrollView from '../components/CustomScrollView';
+import CustomScrollView from '../../components/CustomScrollView';
 
 const VerifyEmailScreen: React.FC = ({navigation}) => {
   return (
     <CustomScrollView>
       <Image
-        source={require('../assets/images/image9.png')}
+        source={require('../../assets/images/image9.png')}
         style={styles.emailIcon}
       />
       <Text style={styles.title}>Verify your email</Text>

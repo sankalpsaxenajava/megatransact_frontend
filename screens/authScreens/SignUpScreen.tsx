@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../types/navigationTypes';
-import CustomScrollView from '../components/CustomScrollView';
-import {InputField} from '../components/InputField';
-import Header from '../components/Header';
-import MegaTransactTitle from '../components/MegaTransactTitle';
+import {RootStackParamList} from '../../types/navigationTypes';
+import CustomScrollView from '../../components/CustomScrollView';
+import {InputField} from '../../components/InputField';
+import Header from '../../components/Header';
+import MegaTransactTitle from '../../components/MegaTransactTitle';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -127,7 +127,7 @@ const SignUpScreen: React.FC = () => {
               error={lastNameError}
             />
             <InputField
-              iconName={require('../assets/icons/email.png')}
+              iconName={require('../../assets/icons/email.png')}
               placeholder="Email"
               secureTextEntry={false}
               value={email}
@@ -154,7 +154,7 @@ const SignUpScreen: React.FC = () => {
               varient="password"
             />
             <InputField
-              iconName={require('../assets/icons/phone.png')}
+              iconName={require('../../assets/icons/phone.png')}
               placeholder="Phone Number (Optional)"
               secureTextEntry={false}
               value={phoneNumber}

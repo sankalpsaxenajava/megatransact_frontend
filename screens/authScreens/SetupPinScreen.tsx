@@ -1,8 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
-import CustomScrollView from '../components/CustomScrollView';
-import {colors} from '../types/colors';
+import CustomScrollView from '../../components/CustomScrollView';
+import {colors} from '../../types/colors';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const SetupPinScreen = () => {
   function onBackHandler() {

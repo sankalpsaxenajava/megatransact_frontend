@@ -1,6 +1,6 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import ListItem from '../components/ListItem';
-import Header from '../components/Header';
+import ListItem from '../../components/ListItem';
+import Header from '../../components/Header';
 
 const PaymentsScreen: React.FC = ({navigation}) => {
   const listData = [

@@ -14,7 +14,7 @@ import {RootStackParamList} from '../../types/navigationTypes';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import {BalanceComponent} from '../../components/BalanceComponent';
-import icons from '../../assets/icons';
+import allImages from '../../assets';
 
 // temporary model - update with schema models
 export type PayWithCardForm = {
@@ -70,7 +70,7 @@ const HeaderComponent = ({colorIndex}: {colorIndex: number}) => {
         <View className="pt-14 flex-row items-center justify-between">
           <View className="flex-row items-center gap-2">
             <TouchableOpacity>
-              <Image source={icons.arrowLeftWhiteIcon} />
+              <Image source={allImages.arrowLeftWhiteIcon} />
             </TouchableOpacity>
             <Text className="text-white">My cards</Text>
           </View>
@@ -86,7 +86,7 @@ const HeaderComponent = ({colorIndex}: {colorIndex: number}) => {
           />
           <View className="flex-col items-center gap-1">
             <TouchableOpacity className="bg-white rounded-full w-12 h-12 justify-center items-center">
-              <Image source={icons.dataIcon} />
+              <Image source={allImages.dataIcon} />
             </TouchableOpacity>
             <Text className="text-white">Add card</Text>
           </View>

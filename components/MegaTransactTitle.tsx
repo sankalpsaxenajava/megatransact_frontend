@@ -1,4 +1,5 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
+import images from '../assets/images';
 
 const MegaTransactTitle = ({
   iconSize,
@@ -32,10 +33,7 @@ const MegaTransactTitle = ({
   });
   return (
     <View className={`flex items-center gap-2 ${componentClassName}`}>
-      <Image
-        source={require('../assets/logos/MegaTransactLogo.png')}
-        style={styles.logo}
-      />
+      <Image source={images.megatransactLogo} style={styles.logo} />
       <View className={`flex items-center ${textComponentClassName}`}>
         <Text style={styles.title}>MegaTransact</Text>
         <Text style={styles.subtitle}>PROSPERING TOGETHER</Text>

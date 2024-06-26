@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import icons from '../assets/icons';
+import allImages from '../assets';
 
 // Define the HeaderComponent with a centered title
 interface HeaderProps {
@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({
         }}
         style={[styles.backButton, iconStyle]}>
         <Image
-          source={icons.arrowLeftIcon} // Ensure this path is correct
+          source={allImages.arrowLeftIcon} // Ensure this path is correct
           style={styles.backIcon}
         />
       </TouchableOpacity>

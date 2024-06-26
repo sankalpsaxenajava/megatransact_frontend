@@ -15,7 +15,7 @@ import CustomScrollView from '../../components/CustomScrollView';
 import {InputField} from '../../components/InputField';
 import Header from '../../components/Header';
 import MegaTransactTitle from '../../components/MegaTransactTitle';
-import icons from '../../assets/icons';
+import allImages from '../../assets';
 
 type SignUpNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -128,7 +128,7 @@ const SignUpScreen: React.FC = () => {
               error={lastNameError}
             />
             <InputField
-              iconName={icons.emailIcon}
+              iconName={allImages.emailIcon}
               placeholder="Email"
               secureTextEntry={false}
               value={email}
@@ -155,7 +155,7 @@ const SignUpScreen: React.FC = () => {
               varient="password"
             />
             <InputField
-              iconName={icons.phoneIcon}
+              iconName={allImages.phoneIcon}
               placeholder="Phone Number (Optional)"
               secureTextEntry={false}
               value={phoneNumber}

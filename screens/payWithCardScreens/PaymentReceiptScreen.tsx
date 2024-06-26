@@ -8,7 +8,7 @@ import {cn} from '../../utils/cn';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {PayWithCardForm} from './PayWithCardScreen';
 import Header from '../../components/Header';
-import icons from '../../assets/icons';
+import allImages from '../../assets';
 
 type PaymentReceiptRouteProps = RouteProp<RootStackParamList, 'PaymentReceipt'>;
 type PaymentReceiptNavigationProps = NativeStackNavigationProp<
@@ -58,7 +58,7 @@ const InformationComponent = ({
 const HeaderComponent = ({balance}: {balance: number}) => {
   return (
     <ImageBackground
-      source={require('../../assets/images/receipt_header.png')}
+      source={allImages.receiptHeader}
       resizeMode="cover"
       className="h-[150px] w-full">
       <View className="flex-row items-center justify-between py-6 px-4">
@@ -166,13 +166,13 @@ const SaveOptionsComponent = () => {
     <View className="flex-row justify-center mb-8 space-x-4 w-full">
       <View className="w-[48%]">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2 bg-white rounded-lg py-4">
-          <Image source={icons.downloadIcon} />
+          <Image source={allImages.downloadIcon} />
           <Text>Download</Text>
         </TouchableOpacity>
       </View>
       <View className="w-[48%]">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2 bg-[#6200EA] rounded-lg py-4">
-          <Image source={icons.shareIcon} />
+          <Image source={allImages.shareIcon} />
           <Text className="text-white">Share</Text>
         </TouchableOpacity>
       </View>

@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-import icons from './../assets/icons';
+import allImages from '../assets';
 import Modal from 'react-native-modal/dist/modal';
 
 // Define the types for the items in the list
@@ -61,7 +61,7 @@ const ItemsListModal: FC<ItemsListModalProps> = ({
             borderRadius: 10,
             padding: 10,
           }}>
-          {item.icon && <Image source={icons[item.icon]} />}
+          {item.icon && <Image source={allImages[item.icon]} />}
           <Text style={styles.title}>{item.label}</Text>
         </View>
       </TouchableOpacity>

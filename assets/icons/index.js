@@ -6,7 +6,7 @@ const icons = {
   avatarIcon: require('./avatar.png'),
   avatarWhiteIcon: require('./avatar_white.png'),
   dataWhiteIcon: require('./data_white.png'),
-  dataIcon: require('/data.png'),
+  dataIcon: require('./data.png'),
   crossIcon: require('./cross.png'),
   bagIcon: require('./bag.png'),
   emailIcon: require('./mail.png'),

@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 const PaymentsScreen: React.FC = ({navigation}) => {
   const listData = [
     {
-      icon: 'userIcon',
+      icon: 'avatarWhiteIcon',
       mainText: 'Buy Airtime',
       description: 'Top up your airtime easily',
       onPress: () => {
@@ -14,7 +14,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       },
     },
     {
-      icon: 'dataIcon',
+      icon: 'dataWhiteIcon',
       mainText: 'Buy Mobile Data',
       description: 'Select a data plan that fits you',
       onPress: () => {
@@ -23,7 +23,7 @@ const PaymentsScreen: React.FC = ({navigation}) => {
       },
     },
     {
-      icon: 'scanIcon',
+      icon: 'scanWhiteIcon',
       mainText: 'Pay Bills',
       description: 'Pay bills at your Fingertips',
       onPress: () => {

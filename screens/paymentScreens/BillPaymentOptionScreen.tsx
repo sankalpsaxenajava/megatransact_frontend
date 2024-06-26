@@ -7,7 +7,7 @@ const BillPaymentOptionScreen: React.FC = ({navigation, route}) => {
   console.log(category);
   const listData = [
     {
-      icon: 'mpesaIcon',
+      icon: 'mpesaLogo',
       mainText: 'Buy via M-Pesa',
       description:
         category === 'AirtimePurchase'
@@ -18,7 +18,7 @@ const BillPaymentOptionScreen: React.FC = ({navigation, route}) => {
       },
     },
     {
-      icon: 'logo',
+      icon: 'megatransactLogo',
       mainText: 'Buy Directly',
       description:
         category === 'AirtimePurchase'

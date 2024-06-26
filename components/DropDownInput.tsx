@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import ItemsListModal, {ListItem} from './ItemsListModal';
 import {InputField} from './InputField';
-import icons from '../assets/icons';
+import allImages from '../assets';
 
 interface DropDownInputProps {
   label: string;
@@ -42,7 +42,7 @@ const DropDownInput: React.FC<DropDownInputProps> = ({
           setOpenModal(true);
         }}>
         <InputField
-          iconName={icons.arrowDownIcon}
+          iconName={allImages.arrowDownIcon}
           placeholder={placeholder}
           secureTextEntry={false}
           value={value}

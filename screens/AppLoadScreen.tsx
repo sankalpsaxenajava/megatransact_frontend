@@ -5,6 +5,7 @@ import {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
+import allImages from '../assets';
 
 type AppLoadNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -24,7 +25,7 @@ const AppLoadScreen = () => {
     <CustomScrollView backgroundColor={colors.primary[600]}>
       <View style={{alignItems: 'center', gap: 20}}>
         <Image
-          source={require('../assets/logos/MegaTransact_lg.png')}
+          source={allImages.megatransactLogo}
           style={{width: 130, height: 130}}
         />
         <Text style={{color: '#fff', fontFamily: 'Manrope-Bold', fontSize: 35}}>

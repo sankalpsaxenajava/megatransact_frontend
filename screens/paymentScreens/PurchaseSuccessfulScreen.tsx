@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import allImages from '../../assets';
 
 type PurchaseSuccessfulProps = {};
 
@@ -10,10 +11,7 @@ const PurchaseSuccessful: React.FC<PurchaseSuccessfulProps> = ({
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.main}>
-        <Image
-          source={require('../../assets/icons/purchase-success.png')}
-          style={styles.image}
-        />
+        <Image source={allImages.purchaseSuccess} style={styles.image} />
         <Text style={styles.pruchaseText}>Data purchase successful</Text>
         <Text style={styles.mobileDataText}>
           Your mobile data has been purchased successfully

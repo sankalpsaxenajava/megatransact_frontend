@@ -10,7 +10,7 @@ import CheckBox from '@react-native-community/checkbox';
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import Header from '../../components/Header';
 import MegaTransactTitle from '../../components/MegaTransactTitle';
-import icons from '../../assets/icons';
+import allImages from '../../assets';
 
 type LoginNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -38,7 +38,7 @@ const InputComponent = ({navigation}) => {
           name="username"
           render={({field: {onChange, value}, fieldState: {error}}) => (
             <InputField
-              iconName={icons.emailIcon}
+              iconName={allImages.emailIcon}
               placeholder="Username"
               secureTextEntry={false}
               value={value}
@@ -103,13 +103,13 @@ const BottomSheetComponent = ({
         <TouchableOpacity
           onPress={() => bottomSheetRef.current?.close()}
           style={styles.sheetCloseButton}>
-          <Image source={icons.crossIcon} />
+          <Image source={allImages.crossIcon} />
         </TouchableOpacity>
       </View>
       <View style={{gap: 20, alignItems: 'center'}}>
         <TouchableOpacity style={styles.sheetFingerprint}>
           <Image
-            source={icons.fingerPrintIcon}
+            source={allImages.fingerPrintIcon}
             style={{width: 150, height: 150}}
           />
         </TouchableOpacity>
@@ -153,7 +153,7 @@ const LoginScreen = ({navigation}) => {
         <InputComponent navigation={navigation} />
         <View style={styles.biometricComponent}>
           <TouchableOpacity onPress={() => bottomSheetRef.current?.expand()}>
-            <Image source={icons.fingerPrintIcon} />
+            <Image source={allImages.fingerPrintIcon} />
           </TouchableOpacity>
           <Text>Touch to login with biometric</Text>
         </View>

@@ -11,6 +11,7 @@ import {colors} from '../types/colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigationTypes';
+import images from '../assets/images';
 
 type SplashNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -28,7 +29,7 @@ const SplashScreen = () => {
 
   return (
     <ImageBackground
-      source={require('../assets/images/splash_bg.png')}
+      source={images.splashBg}
       resizeMode="cover"
       style={styles.imageBackground}>
       <CustomScrollView backgroundColor="transparent">

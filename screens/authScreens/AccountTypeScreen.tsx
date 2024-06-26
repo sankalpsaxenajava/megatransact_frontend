@@ -4,7 +4,7 @@ import {colors} from '../../types/colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../types/navigationTypes';
-import icons from '../../assets/icons';
+import allImages from '../../assets';
 
 type PersonalNavigationProps = NativeStackNavigationProp<
   RootStackParamList,
@@ -21,7 +21,7 @@ const OptionListComponent = () => {
     <View style={styles.optionList}>
       <TouchableOpacity style={styles.option} onPress={onPressPersonal}>
         <View style={styles.iconBackground}>
-          <Image source={icons.avatarIcon} />
+          <Image source={allImages.avatarIcon} />
         </View>
         <View style={styles.textWrapper}>
           <Text style={[styles.text, styles.subtitle]}>Personal account</Text>
@@ -32,7 +32,7 @@ const OptionListComponent = () => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.option}>
         <View style={styles.iconBackground}>
-          <Image source={icons.bagIcon} />
+          <Image source={allImages.bagIcon} />
         </View>
         <View style={styles.textWrapper}>
           <Text style={[styles.text, styles.subtitle]}>Business account</Text>

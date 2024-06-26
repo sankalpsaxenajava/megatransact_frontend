@@ -1,5 +1,6 @@
 import {Image, Pressable, View, Text, StyleSheet} from 'react-native';
-import icons from '../assets/icons';
+import allImages from '../assets';
+
 interface ListItemProp {
   icon: string;
   mainText: string;
@@ -11,7 +12,7 @@ const ListItem = ({icon, mainText, description, onPress}: ListItemProp) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.imgContainer}>
-        <Image style={styles.img} source={icons[icon]} />
+        <Image style={styles.img} source={allImages[icon]} />
       </View>
 
       <View style={styles.textContainer}>
@@ -19,7 +20,7 @@ const ListItem = ({icon, mainText, description, onPress}: ListItemProp) => {
         <Text>{description}</Text>
       </View>
       <View style={styles.iconContainer}>
-        <Image style={styles.logo} source={icons.arrowRightIcon} />
+        <Image style={styles.logo} source={allImages.arrowRightIcon} />
       </View>
     </Pressable>
   );

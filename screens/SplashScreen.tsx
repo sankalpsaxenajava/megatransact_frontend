@@ -35,7 +35,7 @@ const SplashScreen = () => {
       <CustomScrollView backgroundColor="transparent">
         <View style={styles.container}>
           <View style={styles.header}>
-            <MegaTransactTitle iconSize={7} textSize={7} />
+            <MegaTransactTitle iconSize={7} textSize={6} />
           </View>
           <View style={styles.buttonList}>
             <TouchableOpacity style={styles.button} onPress={onLoginHandler}>

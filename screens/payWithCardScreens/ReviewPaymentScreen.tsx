@@ -56,8 +56,8 @@ const ReviewPaymentScreen: React.FC<ReviewPaymentProps> = ({route}) => {
             varient="uneven"
           />
           <View className="flex-col items-start w-full px-4 divide-y divide-[#D9D9D9]">
-            {dataUnpackedList.map(item => (
-              <View className="w-full py-5 gap-y-1">
+            {dataUnpackedList.map((item, index) => (
+              <View className="w-full py-5 gap-y-1" key={index}>
                 <Text className="text-xs font-[200]">{item.label}</Text>
                 <Text>{item.data}</Text>
               </View>

@@ -1,3 +1,5 @@
+import images from '../assets/images';
+
 // Bill Payments mock data
 export const countryList = [
   {
@@ -77,7 +79,7 @@ export const bankList = [
 
 export const cards = [
   {
-    bg_url: require('../assets/images/purple_card.png'), // update when moved
+    bg_url: images.purpleCard, // update when moved
     balance: 620.89,
     four_digits: 7986,
     id: 28390038723,
@@ -86,7 +88,7 @@ export const cards = [
     color: 0,
   },
   {
-    bg_url: require('../assets/images/blue_card.png'),
+    bg_url: images.blueCard,
     balance: 1620.89,
     four_digits: 8120,
     id: 28390038723,

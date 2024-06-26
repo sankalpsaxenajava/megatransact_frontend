@@ -3,6 +3,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../types/navigationTypes';
 import {Image, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import allImages from '../../assets';
 
 type PaymentConfirmationRouteProps = RouteProp<
   RootStackParamList,
@@ -24,9 +25,7 @@ const PaymentConfirmationScreen: React.FC<PaymentConfirmationProps> = ({
   return (
     <View className="h-full flex justify-between">
       <View className="flex items-center justify-center gap-6 h-[70%]">
-        <Image
-          source={require('../../assets/icons/payment_confirmation.png')}
-        />
+        <Image source={allImages.paymentConfirm} />
         <Text className="text-2xl">Money Sent to Cashier</Text>
       </View>
       <View className="mx-8 gap-y-7 mb-10">

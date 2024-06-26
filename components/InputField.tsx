@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   TextInput,
@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import icons from '../assets/icons';
+import allImages from '../assets';
 
 export const InputField: React.FC<InputFieldProps> = ({
   iconName,
@@ -27,7 +27,7 @@ export const InputField: React.FC<InputFieldProps> = ({
     <View style={[styles.inputField, !!error && {borderColor: 'red'}]}>
       {varient == 'money' && <Text className="text-base mr-2">$</Text>}
       {labelIcon && (
-        <Image source={icons[labelIcon]} className="w-5 h-5 mr-2" />
+        <Image source={allImages[labelIcon]} className="w-5 h-5 mr-2" />
       )}
       <TextInput
         placeholder={placeholder}
@@ -48,11 +48,7 @@ export const InputField: React.FC<InputFieldProps> = ({
       {varient == 'password' && (
         <TouchableOpacity onPress={() => setIsHidden(!isHidden)}>
           <Image
-            source={
-              isHidden
-                ? require('../assets/icons/eye_off.png')
-                : require('../assets/icons/eye_on.png')
-            }
+            source={isHidden ? allImages.eyeOffIcon : allImages.eyeOnIcon}
             style={styles.inputIcon}
           />
         </TouchableOpacity>
